@@ -1,92 +1,12 @@
-        </div>
-    </section>
-
-    <!-- Ejemplos de Muestra Section -->
-    <section class="py-16 bg-white">
-        <div class="container mx-auto px-6">
-            <h3 class="text-2xl font-semibold text-center text-gray-900 mb-6">Ejemplos de Muestra</h3>
-            <div class="grid md:grid-cols-3 gap-6">
-                <div class="bg-gray-50 p-4 rounded-lg shadow-sm">
-                    <img src="Brocoli.jpg" alt="Brocoli" class="rounded-lg mb-4">
-                    <p class="text-gray-600">Muestra de Brócoli con semáforo de cumplimiento.</p>
-                </div>
-                <div class="bg-gray-50 p-4 rounded-lg shadow-sm">
-                    <img src="Fresa.jpg" alt="Fresa" class="rounded-lg mb-4">
-                    <p class="text-gray-600">Muestra de Fresas con etiqueta de cumplimiento.</p>
-                </div>
-                <div class="bg-gray-50 p-4 rounded-lg shadow-sm">
-                    <img src="Pimientos.jpg" alt="Pimientos" class="rounded-lg mb-4">
-                    <p class="text-gray-600">Muestra de Pimientos con etiqueta de análisis.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Nosotros Section -->
-    <section id="nosotros" class="py-16 bg-gray-100">
-        <div class="container mx-auto px-6">
-            <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-12">Nosotros</h2>
-            <div class="max-w-4xl mx-auto"><!DOCTYPE html>
+     <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TraceLab - Laboratorio de Análisis Químico</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        .fade-in-element {
-            animation: fadeIn 1.5s ease-in-out;
-        }
-        .nav-link {
-            transition-property: color;
-            transition-duration: 0.3s;
-            transition-timing-function: ease;
-        }
-        .nav-link:hover {
-            color: #10B981;
-        }
-        .transition-shadow {
-            transition-property: box-shadow;
-            transition-duration: 0.3s;
-            transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .hover\:shadow-xl:hover {
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-        }
-        .transition-colors {
-            transition-property: background-color, border-color, color, fill, stroke;
-            transition-duration: 0.3s;
-            transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .hover\:bg-green-600:hover {
-            background-color: #059669;
-        }
-        .hover\:text-white:hover {
-            color: #fff;
-        }
-        .hover\:underline:hover {
-            text-decoration-line: underline;
-        }
-        .focus\:outline-none:focus {
-            outline: 2px solid transparent;
-            outline-offset: 2px;
-        }
-        .focus\:ring-2:focus {
-            --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
-            --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);
-            box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
-        }
-        .focus\:ring-green-500:focus {
-            --tw-ring-color: #10B981;
-        }
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #f7fafc;
-        }
-        /* Tailwind CSS classes */
+        /* Estilos de Tailwind CSS en línea */
         .bg-white { background-color: #fff; }
         .shadow-md { box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); }
         .sticky { position: sticky; }
@@ -195,6 +115,59 @@
         .duration-300 { transition-duration: 0.3s; }
         .text-gray-400 { color: #9ca3af; }
         .hover\:text-white:hover { color: #fff; }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .fade-in-element {
+            animation: fadeIn 1.5s ease-in-out;
+        }
+        .nav-link {
+            transition-property: color;
+            transition-duration: 0.3s;
+            transition-timing-function: ease;
+        }
+        .nav-link:hover {
+            color: #10B981;
+        }
+        .transition-shadow {
+            transition-property: box-shadow;
+            transition-duration: 0.3s;
+            transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .hover\:shadow-xl:hover {
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .transition-colors {
+            transition-property: background-color, border-color, color, fill, stroke;
+            transition-duration: 0.3s;
+            transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .hover\:bg-green-600:hover {
+            background-color: #059669;
+        }
+        .hover\:text-white:hover {
+            color: #fff;
+        }
+        .hover\:underline:hover {
+            text-decoration-line: underline;
+        }
+        .focus\:outline-none:focus {
+            outline: 2px solid transparent;
+            outline-offset: 2px;
+        }
+        .focus\:ring-2:focus {
+            --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
+            --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);
+            box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
+        }
+        .focus\:ring-green-500:focus {
+            --tw-ring-color: #10B981;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f7fafc;
+        }
     </style>
 </head>
 <body class="text-gray-800">
@@ -403,7 +376,7 @@
                 <!-- Formulario de contacto -->
                 <div class="bg-white p-8 rounded-lg shadow-md">
                     <h3 class="text-2xl font-semibold text-gray-900 mb-6">Envíanos un mensaje</h3>
-                    <form onsubmit="return handleFormSubmit(event);">
+                    <form id="contactForm">
                         <div class="mb-4">
                             <label for="name" class="block text-gray-700 font-medium mb-2">Nombre</label>
                             <input type="text" id="name" name="name" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500" required>
@@ -467,8 +440,16 @@
             const formStatus = document.getElementById('form-status');
             formStatus.innerHTML = '<p class="text-green-500">¡Mensaje enviado con éxito! Nos pondremos en contacto contigo pronto.</p>';
             formStatus.classList.remove('hidden');
-            document.querySelector('form').reset();
+            document.getElementById('contactForm').reset();
         }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const form = document.getElementById('contactForm');
+            if (form) {
+                form.addEventListener('submit', handleFormSubmit);
+            }
+        });
     </script>
 </body>
 </html>
+
