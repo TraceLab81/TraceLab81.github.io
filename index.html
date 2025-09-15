@@ -3,12 +3,22 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>TraceLab - Laboratorio de Análisis Químico</title>
+  <title>TraceLab - Metales Pesados en Hortalizas (Cd · Pb)</title>
 
   <!-- Fuente -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
 
+  <!-- SEO básico -->
+  <meta name="description" content="Laboratorio especializado en detección y cuantificación de Cadmio (Cd) y Plomo (Pb) en hortalizas. Reportes con semáforo, QA/QC y alineado a Codex, UE y FDA.">
   <meta name="theme-color" content="#0ea765" />
+
+  <!-- Open Graph / Social -->
+  <meta property="og:title" content="TraceLab - Seguridad alimentaria con rigor científico">
+  <meta property="og:description" content="Análisis de Cd y Pb en hortalizas con reportes claros y QA/QC.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="Semaforo.jpg">
+  <meta property="og:locale" content="es_MX">
+
   <style>
     /* =========  Diseño base  ========= */
     :root{
@@ -46,10 +56,7 @@
     }
     a{ color:inherit; text-decoration:none }
     img{ max-width:100%; display:block }
-    .container{
-      width:min(1120px, 92%);
-      margin-inline:auto;
-    }
+    .container{ width:min(1120px, 92%); margin-inline:auto; }
     .btn{
       display:inline-flex; align-items:center; justify-content:center;
       font-weight:700; padding:.9rem 1.2rem; border-radius:14px;
@@ -63,11 +70,24 @@
       line-height:1.2; text-align:center; margin:0 0 20px;
       font-weight:800; letter-spacing:.2px;
     }
-    .lead{
-      text-align:center; color:var(--muted); max-width:56ch; margin:0 auto 8px;
+    .lead{ text-align:center; color:var(--muted); max-width:56ch; margin:0 auto 8px; }
+    .center{ text-align:center }
+    .grid{ display:grid; gap:22px }
+    .grid-3{ grid-template-columns:repeat(3, 1fr) }
+    .grid-4{ grid-template-columns:repeat(4, 1fr) }
+    .grid-2{ grid-template-columns:repeat(2, 1fr) }
+    @media (max-width: 980px){ .grid-4{ grid-template-columns:repeat(2, 1fr) } }
+    @media (max-width: 780px){ .grid-3,.grid-2,.grid-4{ grid-template-columns:1fr } }
+    .card{
+      background:var(--card); border:1px solid var(--hair); border-radius:var(--radius);
+      padding:22px; box-shadow:var(--shadow); transition:.25s ease; height:100%;
     }
-
-    /* =========  Navbar pegajoso con blur  ========= */
+    .card:hover{ transform: translateY(-4px); box-shadow: 0 16px 44px -24px rgba(2,6,23,.45) }
+    .pill{
+      width:64px; height:64px; border-radius:16px; display:grid; place-items:center;
+      background:linear-gradient(135deg, var(--brand), color-mix(in oklab, var(--brand) 70%, black));
+      color:#fff; box-shadow:0 12px 26px -18px rgba(14,167,101, .9); margin: 4px 0 12px;
+    }
     .nav{
       position:sticky; top:0; z-index:50;
       backdrop-filter:saturate(140%) blur(10px);
@@ -78,12 +98,8 @@
     .brand{ display:flex; align-items:center; gap:12px; font-weight:800 }
     .brand img{ height:40px; width:auto; border-radius:10px; object-fit:cover }
     .nav-links{ display:flex; gap:28px; align-items:center }
-    .nav-link{
-      color:var(--muted); font-weight:600; padding:8px 10px; border-radius:10px; transition:.2s;
-    }
+    .nav-link{ color:var(--muted); font-weight:600; padding:8px 10px; border-radius:10px; transition:.2s; }
     .nav-link:hover{ color:var(--text); background:var(--hair) }
-
-    /* móvil */
     .burger{ display:none; background:none; border:0; padding:8px; border-radius:10px }
     @media (max-width: 860px){
       .nav-links{ display:none }
@@ -93,8 +109,6 @@
       .mobile a:hover{ background:color-mix(in oklab, var(--hair), transparent 60%); color:var(--text) }
       .mobile.open{ display:block }
     }
-
-    /* =========  Hero  ========= */
     .hero{
       position:relative; overflow:hidden; padding: clamp(96px, 12vw, 160px) 0 90px;
       background:
@@ -107,47 +121,11 @@
       line-height:1.08; margin:0 0 14px; text-wrap:balance;
       letter-spacing:-.5px; font-weight:800;
     }
-    .hero p{ color:var(--muted); max-width:62ch; margin:0 0 24px }
-    .center{ text-align:center }
-    .hero-inner{ display:grid; gap:18px; justify-items:center }
-
-    /* =========  Tarjetas / grid  ========= */
-    .grid{ display:grid; gap:22px }
-    .grid-3{ grid-template-columns:repeat(3, 1fr) }
-    .grid-4{ grid-template-columns:repeat(4, 1fr) }
-    .grid-2{ grid-template-columns:repeat(2, 1fr) }
-    @media (max-width: 980px){ .grid-4{ grid-template-columns:repeat(2, 1fr) } }
-    @media (max-width: 780px){ .grid-3,.grid-2,.grid-4{ grid-template-columns:1fr } }
-
-    .card{
-      background:var(--card); border:1px solid var(--hair); border-radius:var(--radius);
-      padding:22px; box-shadow:var(--shadow); transition:.25s ease; height:100%;
-    }
-    .card:hover{ transform: translateY(-4px); box-shadow: 0 16px 44px -24px rgba(2,6,23,.45) }
-    .card h3{ margin:4px 0 6px; font-size:1.25rem; font-weight:700 }
-    .card p{ color:var(--muted); margin:0 }
-    .pill{
-      width:64px; height:64px; border-radius:16px; display:grid; place-items:center;
-      background:linear-gradient(135deg, var(--brand), color-mix(in oklab, var(--brand) 70%, black));
-      color:#fff; box-shadow:0 12px 26px -18px rgba(14,167,101, .9); margin: 4px 0 12px;
-    }
-
-    /* =========  Galería  ========= */
-    .media{
-      background:var(--card); border:1px solid var(--hair);
-      border-radius:var(--radius); overflow:hidden; box-shadow:var(--shadow);
-    }
+    .media{ background:var(--card); border:1px solid var(--hair); border-radius:var(--radius); overflow:hidden; box-shadow:var(--shadow); }
     .media img{ aspect-ratio: 16 / 10; object-fit: cover; width:100% }
     .media .caption{ padding:12px 16px; color:var(--muted) }
-
-    /* =========  Equipo  ========= */
-    .avatar{
-      width:96px; height:96px; border-radius:50%;
-      overflow:hidden; margin:0 auto 12px; border:2px solid var(--hair)
-    }
+    .avatar{ width:96px; height:96px; border-radius:50%; overflow:hidden; margin:0 auto 12px; border:2px solid var(--hair) }
     .role{ color:var(--muted); font-size:.98rem }
-
-    /* =========  Contacto  ========= */
     .input, textarea{
       width:100%; padding:12px 14px; border-radius:12px; border:1px solid var(--hair);
       background:var(--card); color:var(--text); outline:none; transition: .2s ease;
@@ -157,27 +135,8 @@
     .map{ aspect-ratio:16 / 9; width:100%; border:0; border-radius:14px; overflow:hidden }
     .contact-card{ display:grid; gap:26px; grid-template-columns: 1.1fr .9fr }
     @media (max-width: 980px){ .contact-card{ grid-template-columns:1fr } }
-
-    /* =========  Footer  ========= */
-<footer>
-  <div class="container center">
-    <div class="social">
-      <a class="icon" href="https://instagram.com/tracelabmx" target="_blank" rel="noopener" aria-label="Instagram">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-          <path d="M12.315 2c2.43 0 2.76.014 3.71.054 1.05.043 1.63.228 2.06.398.5.2.92.43 1.34.85.42.42.65.84.85 1.34.17.43.35 1.01.4 2.06.04 1.05.05 1.38.05 3.71s-.01 2.6-.05 3.65c-.05 1.05-.23 1.63-.4 2.06-.2.5-.43.92-.85 1.34-.42.42-.84.65-1.34.85-.43.17-1.01.35-2.06.4-.95.04-1.28.05-3.65.05s-2.6-.01-3.65-.05c-1.05-.05-1.63-.23-2.06-.4-.5-.2-.92-.43-1.34-.85-.42-.42-.65-.84-.85-1.34-.17-.43-.35-1.01-.4-2.06-.04-1.05-.05-1.38-.05-3.65s.01-2.6.05-3.65c.05-1.05.23-1.63.4-2.06.2-.5.43-.92.85-1.34.42-.42.84-.65 1.34-.85.43-.17 1.01-.35 2.06-.4 1.05-.04 1.38-.05 3.71-.05Z"/>
-          <circle cx="12" cy="12" r="3"/>
-        </svg>
-      </a>
-    </div>
-    <small>&copy; 2025 TraceLab. Todos los derechos reservados.</small>
-  </div>
-</footer>
-
-    /* =========  Micro-animaciones  ========= */
     .reveal{ opacity:0; transform: translateY(12px); transition: .6s cubic-bezier(.2,.65,.25,1); }
     .reveal.show{ opacity:1; transform:none }
-
-    /* Utilidades */
     .mb-4{ margin-bottom:14px } .mb-6{ margin-bottom:18px } .mb-8{ margin-bottom:24px }
     .mt-2{ margin-top:8px } .mt-4{ margin-top:14px } .mt-6{ margin-top:18px } .mt-8{ margin-top:24px }
     .center-narrow{ max-width: 72ch; margin-inline:auto }
@@ -185,39 +144,94 @@
     .sem-figure{ width:min(520px, 100%) ; margin-inline:auto; border-radius:18px; overflow:hidden; border:1px solid var(--hair); box-shadow:var(--shadow) }
     .chips{ display:flex; flex-wrap:wrap; gap:10px; justify-content:center }
     .chip{ border:1px solid var(--hair); padding:8px 12px; border-radius:999px; color:var(--muted); background:var(--card) }
+    /* Badges QA/QC */
+    .badges{ display:flex; flex-wrap:wrap; gap:10px; justify-content:center }
+    .badge{ background:var(--card); border:1px dashed var(--brand); padding:6px 10px; border-radius:999px; font-weight:600 }
+    /* Tabla simple */
+    table{ width:100%; border-collapse: collapse; }
+    th, td{ padding:12px 10px; border-bottom:1px solid var(--hair); text-align:left; }
+    th{ font-weight:700 }
+    /* Timeline */
+    .timeline{ display:grid; gap:12px; }
+    .titem{ background:var(--card); border:1px solid var(--hair); border-radius:14px; padding:12px 14px }
+    /* Footer */
+    footer{ border-top:1px solid var(--hair); padding:26px 0; }
+    .social{ display:flex; gap:16px; justify-content:center; margin-bottom:10px }
+    .icon{ color:var(--muted) }
+    .icon:hover{ color:var(--text) }
   </style>
+
+  <!-- JSON-LD Organización -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Organization",
+    "name":"TraceLab",
+    "url":"https://tracelab.example", 
+    "logo":"Logo tracelabbb.jpg",
+    "sameAs":["https://instagram.com/tracelabmx"],
+    "address":{
+      "@type":"PostalAddress",
+      "streetAddress":"Av. 5 de Mayo No. 1",
+      "addressLocality":"Silao de la Victoria",
+      "addressRegion":"Guanajuato",
+      "postalCode":"36130",
+      "addressCountry":"MX"
+    },
+    "contactPoint":[{
+      "@type":"ContactPoint",
+      "contactType":"Ventas",
+      "email":"tracelab81@gmail.com",
+      "telephone":"+52-55-1234-5678",
+      "areaServed":"MX"
+    }]
+  }
+  </script>
 </head>
 
 <body>
 
+  <!-- Barra de aviso normativo -->
+  <div style="background:#0ea765;color:white">
+    <div class="container" style="display:flex;gap:10px;align-items:center;justify-content:center;padding:8px 0">
+      <strong>Referencia de límites (vegetales hoja):</strong>
+      <span style="opacity:.95">Pb ≤ 1.0 mg/kg · Cd ≤ 0.2 mg/kg</span>
+      <!-- Estos valores aparecen como ejemplo en el Plan -->
+    </div>
+  </div>
+
   <!-- Navbar -->
-  <header class="nav">
+  <header class="nav" role="banner">
     <div class="container nav-wrap">
       <a href="#inicio" class="brand">
         <img src="Logo tracelabbb.jpg" alt="Logotipo TraceLab">
         <span>TraceLab</span>
       </a>
-
-      <nav class="nav-links" aria-label="Primary">
+      <nav class="nav-links" aria-label="Navegación principal">
         <a class="nav-link" href="#inicio">Inicio</a>
         <a class="nav-link" href="#servicios">Servicios</a>
+        <a class="nav-link" href="#metodologia">Metodología</a>
+        <a class="nav-link" href="#normativas">Normativas</a>
+        <a class="nav-link" href="#acreditacion">Acreditación</a>
         <a class="nav-link" href="#nosotros">Nosotros</a>
         <a class="nav-link" href="#contacto">Contacto</a>
       </nav>
-
       <button class="burger" id="burger" aria-label="Abrir menú">
         <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
       </button>
-      <div class="mobile" id="mobile">
+      <div class="mobile" id="mobile" role="dialog" aria-label="Menú móvil">
         <a href="#inicio">Inicio</a>
         <a href="#servicios">Servicios</a>
+        <a href="#metodologia">Metodología</a>
+        <a href="#normativas">Normativas</a>
+        <a href="#acreditacion">Acreditación</a>
         <a href="#nosotros">Nosotros</a>
         <a href="#contacto">Contacto</a>
       </div>
     </div>
   </header>
 
-  <!-- Hero/Inicio -->
+  <!-- Hero -->
   <section id="inicio" class="hero">
     <div class="container hero-inner">
       <h1 class="center reveal">Seguridad Alimentaria con Rigor Científico</h1>
@@ -228,40 +242,38 @@
         <a class="btn" href="#servicios">Conoce nuestros servicios</a>
       </div>
       <div class="chips mt-8 reveal" aria-hidden="true">
-        <span class="chip">Cd</span><span class="chip">Pb</span><span class="chip">Normativas: Codex · UE · FDA</span><span class="chip">Semaforización</span>
+        <span class="chip">Cd</span><span class="chip">Pb</span><span class="chip">Codex · UE · FDA</span><span class="chip">Semaforización</span><span class="chip">QA/QC</span>
       </div>
     </div>
   </section>
 
-  <!-- Misión / Visión / Propuesta de valor -->
+  <!-- Propuesta de valor rápida + Precio -->
   <section class="section">
     <div class="container">
       <div class="grid grid-3">
         <div class="card reveal">
           <div class="pill" aria-hidden="true">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M12 20s8-4 8-10a8 8 0 1 0-16 0c0 6 8 10 8 10Z" stroke="currentColor" stroke-width="1.6"/></svg>
-          </div>
-          <h3>Misión</h3>
-          <p>Proteger la salud de los consumidores y fortalecer la competitividad del sector agrícola del Bajío con servicios de análisis confiables, accesibles y sustentables.</p>
-        </div>
-        <div class="card reveal">
-          <div class="pill" aria-hidden="true">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="m12 3 3 6 6 1-4 5 1 6-6-3-6 3 1-6-4-5 6-1 3-6Z" stroke="currentColor" stroke-width="1.6"/></svg>
-          </div>
-          <h3>Visión</h3>
-          <p>Consolidarnos en 5 años como laboratorio de referencia en Guanajuato y el Bajío para contaminantes en alimentos, reconocidos por calidad, innovación y compromiso social.</p>
-        </div>
-        <div class="card reveal">
-          <div class="pill" aria-hidden="true">
             <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M4 12h16M4 7h16M4 17h10" stroke="currentColor" stroke-width="1.6"/></svg>
           </div>
           <h3>Propuesta de Valor</h3>
-          <div class="split-3">
-            <p>• Cuantificación de Cd y Pb con metodologías validadas</p>
-            <p>• Reportes claros con semaforización</p>
-            <p>• Alineación con Codex, UE y FDA</p>
-            <p>• Costos competitivos y atención cercana</p>
+          <p>Resultados claros con semaforización y trazabilidad QA/QC para decisiones comerciales rápidas.</p>
+        </div>
+        <div class="card reveal">
+          <div class="pill" aria-hidden="true">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M8 4h8v16H8z" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="8" r="1.4" fill="currentColor"/><circle cx="12" cy="12" r="1.4" fill="currentColor"/><circle cx="12" cy="16" r="1.4" fill="currentColor"/></svg>
           </div>
+          <h3>QA/QC como estándar</h3>
+          <div class="badges" aria-label="Controles de calidad">
+            <span class="badge">Blanco</span><span class="badge">Duplicado</span><span class="badge">MS</span><span class="badge">MSD</span><span class="badge">CCV/10 lecturas</span>
+          </div>
+          <p class="mt-4" style="color:var(--muted)">Aplicados en cada corrida analítica.</p>
+        </div>
+        <div class="card reveal">
+          <div class="pill" aria-hidden="true">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="1.6"/></svg>
+          </div>
+          <h3>Desde $1,200 MXN/muestra</h3>
+          <p style="color:var(--muted)">Tarifa de referencia para Cd y Pb en hortalizas. <em>Solicita cotización por volumen.</em></p>
         </div>
       </div>
     </div>
@@ -279,7 +291,7 @@
             <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M7 3h10a2 2 0 0 1 2 2v14l-7-3-7 3V5a2 2 0 0 1 2-2Z" stroke="currentColor" stroke-width="1.6"/></svg>
           </div>
           <h3>Análisis de Cadmio y Plomo</h3>
-          <p>Cuantificación precisa de Cd y Pb en hortalizas frescas mediante metodologías robustas y validadas.</p>
+          <p>Cuantificación de Cd y Pb en hortalizas frescas mediante metodologías robustas y validadas.</p>
         </article>
 
         <article class="card reveal">
@@ -287,7 +299,7 @@
             <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M8 4h8v16H8z" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="8" r="1.4" fill="currentColor"/><circle cx="12" cy="12" r="1.4" fill="currentColor"/><circle cx="12" cy="16" r="1.4" fill="currentColor"/></svg>
           </div>
           <h3>Reportes con Semáforo</h3>
-          <p>Visualización verde/amarillo/rojo para interpretar resultados de un vistazo y decidir acciones.</p>
+          <p>Visual verde/amarillo/rojo para interpretar resultados de un vistazo y decidir acciones.</p>
         </article>
 
         <article class="card reveal">
@@ -295,7 +307,7 @@
             <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M4 7h16M4 12h10M4 17h7" stroke="currentColor" stroke-width="1.6"/></svg>
           </div>
           <h3>Consultoría y Asesoría</h3>
-          <p>Acompañamiento en normativas internacionales y estrategias para inocuidad y competitividad.</p>
+          <p>Muestreo, normativas internacionales y estrategias de inocuidad y competitividad.</p>
         </article>
 
         <article class="card reveal">
@@ -303,7 +315,7 @@
             <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="1.6"/></svg>
           </div>
           <h3>Futuros Análisis</h3>
-          <p>Expansión continua a otros contaminantes emergentes conforme a necesidades del sector.</p>
+          <p>Expansión a otros contaminantes inorgánicos según necesidades del sector.</p>
         </article>
       </div>
 
@@ -317,21 +329,86 @@
     </div>
   </section>
 
-  <!-- Ejemplos de muestra -->
+  <!-- Metodología (explicada a nivel negocio) -->
+  <section id="metodologia" class="section" style="padding-top:50px">
+    <div class="container">
+      <h2 class="title reveal">Metodología EPA 3050B + FAAS</h2>
+      <p class="lead reveal">Una sola digestión, doble respuesta (Cd y Pb) con controles QA/QC integrados.</p>
+      <div class="grid grid-4 mt-6">
+        <div class="card reveal">
+          <h3>Recepción & Homogenización</h3>
+          <p>Tratamiento del lote, lavado, troceado y homogenización de 1–2 g de porción analítica.</p>
+        </div>
+        <div class="card reveal">
+          <h3>Digestión Ácida</h3>
+          <p>HNO₃ + H₂O₂ en hotplate; se lleva a 100 mL con agua desionizada (solución madre).</p>
+        </div>
+        <div class="card reveal">
+          <h3>FAAS</h3>
+          <p>Curva con estándares certificados; lectura de Cd y Pb desde la misma digestión.</p>
+        </div>
+        <div class="card reveal">
+          <h3>QA/QC</h3>
+          <p>Blanco, Duplicado, MS, MSD y CCV cada 10 lecturas; resultados en mg/kg y semáforo.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Normativas y límites -->
+  <section id="normativas" class="section" style="padding-top:50px">
+    <div class="container">
+      <h2 class="title reveal">Normativas de Referencia</h2>
+      <p class="lead reveal">Interpretamos los resultados con base en estándares internacionales.</p>
+      <div class="card mt-6 reveal">
+        <div style="overflow:auto">
+          <table aria-label="Tabla de límites de referencia por normativa">
+            <thead><tr><th>Norma</th><th>Matriz</th><th>Pb (mg/kg)</th><th>Cd (mg/kg)</th></tr></thead>
+            <tbody>
+              <tr><td>Codex / UE</td><td>Vegetales de hoja</td><td>1.0</td><td>0.2</td></tr>
+              <tr><td>FDA (referencial)</td><td>Interpretación para exportación</td><td>—</td><td>—</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="mt-4" style="color:var(--muted)">*Usamos criterios de Codex/UE para respaldar decisiones de exportación.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Roadmap de Acreditación -->
+  <section id="acreditacion" class="section" style="padding-top:50px">
+    <div class="container">
+      <h2 class="title reveal">Hoja de Ruta a la Acreditación</h2>
+      <p class="lead reveal">Plan de 3 meses: instalación, validación, piloto y lanzamiento.</p>
+      <div class="timeline mt-6">
+        <div class="titem reveal"><strong>Sep 12–25:</strong> Adecuación del local y seguridad.</div>
+        <div class="titem reveal"><strong>Sep 26–Oct 9:</strong> Compra FAAS, hotplates, cristalería, mobiliario.</div>
+        <div class="titem reveal"><strong>Oct 10–20:</strong> Instalación FAAS y gases; calibración inicial.</div>
+        <div class="titem reveal"><strong>Oct 15–24:</strong> Reactivos y consumibles.</div>
+        <div class="titem reveal"><strong>Oct 25–Nov 4:</strong> Pruebas de método (EPA 3050B + FAAS).</div>
+        <div class="titem reveal"><strong>Nov 5–19:</strong> Capacitación QA/QC interna.</div>
+        <div class="titem reveal"><strong>Nov 20–Dic 4:</strong> Piloto (20 muestras reales).</div>
+        <div class="titem reveal"><strong>Dic 5–20:</strong> Lanzamiento comercial y difusión.</div>
+      </div>
+      <p class="mt-4 center" style="color:var(--muted)">Objetivo: sentar bases para NMX-EC-17025 y relaciones con exportadores.</p>
+    </div>
+  </section>
+
+  <!-- Ejemplos / Galería -->
   <section class="section">
     <div class="container">
       <h3 class="title reveal" style="font-size:1.6rem">Ejemplos de Muestra</h3>
       <div class="grid grid-3 mt-6">
         <figure class="media reveal">
-          <img src="Brocoli.jpg" alt="Muestra de brócoli con etiqueta de cumplimiento" />
-          <figcaption class="caption">Brócoli con semaforización de cumplimiento.</figcaption>
+          <img src="Brocoli.jpg" alt="Brócoli con etiqueta de cumplimiento">
+          <figcaption class="caption">Brócoli con semaforización.</figcaption>
         </figure>
         <figure class="media reveal">
-          <img src="Fresa.jpg" alt="Muestra de fresas con etiqueta de cumplimiento" />
+          <img src="Fresa.jpg" alt="Fresas con etiqueta de cumplimiento">
           <figcaption class="caption">Fresas con etiqueta de cumplimiento.</figcaption>
         </figure>
         <figure class="media reveal">
-          <img src="Pimientos.jpg" alt="Muestra de pimientos con etiqueta de análisis" />
+          <img src="Pimientos.jpg" alt="Pimientos con etiqueta de análisis">
           <figcaption class="caption">Pimientos con etiqueta de análisis.</figcaption>
         </figure>
       </div>
@@ -383,6 +460,31 @@
     </div>
   </section>
 
+  <!-- FAQ -->
+  <section class="section">
+    <div class="container">
+      <h2 class="title reveal">Preguntas Frecuentes</h2>
+      <div class="grid grid-2 mt-6">
+        <div class="card reveal">
+          <h3>¿En cuánto tiempo entregan resultados?</h3>
+          <p>Servicio estándar en <strong>&lt;72 h</strong> tras recepción de muestra y validación QA/QC.</p>
+        </div>
+        <div class="card reveal">
+          <h3>¿Cómo interpretan si “cumple” para exportación?</h3>
+          <p>Comparamos con límites de referencia internacionales (Codex/UE) y marcamos semáforo en el reporte.</p>
+        </div>
+        <div class="card reveal">
+          <h3>¿Pueden apoyar en muestreo?</h3>
+          <p>Sí, asesoramos en muestreo compuesto y cadena de custodia para trazabilidad.</p>
+        </div>
+        <div class="card reveal">
+          <h3>¿Emiten reportes bilingües?</h3>
+          <p>Sí, español/inglés (y francés bajo solicitud) con gráficos de lote y sello de conformidad.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Contacto -->
   <section id="contacto" class="section" style="padding-top: 50px">
     <div class="container">
@@ -423,17 +525,14 @@
   </section>
 
   <!-- Footer -->
-  <footer>
+  <footer role="contentinfo">
     <div class="container center">
       <div class="social">
-        <a class="icon" href="#" aria-label="Instagram">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12.315 2c2.43 0 2.76.014 3.71.054 1.05.043 1.63.228 2.06.398.5.2.92.43 1.34.85.42.42.65.84.85 1.34.17.43.35 1.01.4 2.06.04 1.05.05 1.38.05 3.71s-.01 2.6-.05 3.65c-.05 1.05-.23 1.63-.4 2.06-.2.5-.43.92-.85 1.34-.42.42-.84.65-1.34.85-.43.17-1.01.35-2.06.4-.95.04-1.28.05-3.65.05s-2.6-.01-3.65-.05c-1.05-.05-1.63-.23-2.06-.4-.5-.2-.92-.43-1.34-.85-.42-.42-.65-.84-.85-1.34-.17-.43-.35-1.01-.4-2.06-.04-1.05-.05-1.38-.05-3.65s.01-2.6.05-3.65c.05-1.05.23-1.63.4-2.06.2-.5.43-.92.85-1.34.42-.42.84-.65 1.34-.85.43-.17 1.01-.35 2.06-.4 1.05-.04 1.38-.05 3.71-.05Z"/><circle cx="12" cy="12" r="3"/></svg>
-        </a>
-        <a class="icon" href="#" aria-label="X">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M4 4h2l5.5 7L6 20H4l5.7-7.6L4 4Zm7 0h9v2h-7.4l-2-2Zm9 16h-2l-6-7.6 1.5-2L20 20Z"/></svg>
-        </a>
-        <a class="icon" href="#" aria-label="Facebook">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M13 20v-7h2.2l.3-3H13V8.2c0-.8.2-1.2 1.3-1.2H16V4.2c-.6-.1-1.4-.2-2.1-.2-2.1 0-3.6 1.2-3.6 3.5V10H8v3h2.3v7H13Z"/></svg>
+        <a class="icon" href="https://instagram.com/tracelabmx" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M12.315 2c2.43 0 2.76.014 3.71.054 1.05.043 1.63.228 2.06.398.5.2.92.43 1.34.85.42.42.65.84.85 1.34.17.43.35 1.01.4 2.06.04 1.05.05 1.38.05 3.71s-.01 2.6-.05 3.65c-.05 1.05-.23 1.63-.4 2.06-.2.5-.43.92-.85 1.34-.42.42-.84.65-1.34.85-.43.17-1.01.35-2.06.4-.95.04-1.28.05-3.65.05s-2.6-.01-3.65-.05c-1.05-.05-1.63-.23-2.06-.4-.5-.2-.92-.43-1.34-.85-.42-.42-.65-.84-.85-1.34-.17-.43-.35-1.01-.4-2.06-.04-1.05-.05-1.38-.05-3.65s.01-2.6.05-3.65c.05-1.05.23-1.63.4-2.06.2-.5.43-.92.85-1.34.42-.42.84-.65 1.34-.85.43-.17 1.01-.35 2.06-.4 1.05-.04 1.38-.05 3.71-.05Z"/>
+            <circle cx="12" cy="12" r="3"/>
+          </svg>
         </a>
       </div>
       <small>&copy; 2025 TraceLab. Todos los derechos reservados.</small>
@@ -476,6 +575,3 @@
   </script>
 </body>
 </html>
->
-</html>
-
