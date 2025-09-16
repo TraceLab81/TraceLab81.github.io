@@ -3,751 +3,162 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>TraceLab - Metales Pesados en Hortalizas (Cd · Pb)</title>
+  <title>TraceLab - Laboratorio de Análisis Químico</title>
 
   <!-- Fuente -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
-
-  <!-- SEO básico -->
-  <meta name="description" content="Laboratorio especializado en detección y cuantificación de Cadmio (Cd) y Plomo (Pb) en hortalizas. Reportes con semáforo, QA/QC y alineado a Codex, UE y referencia FDA." />
   <meta name="theme-color" content="#0ea765" />
 
-  <!-- Open Graph / Social -->
-  <meta property="og:title" content="TraceLab - Seguridad alimentaria con rigor científico" />
-  <meta property="og:description" content="Análisis de Cd y Pb en hortalizas con reportes claros y QA/QC." />
-  <meta property="og:type" content="website" />
-  <meta property="og:image" content="Semaforo.jpg" />
-  <meta property="og:locale" content="es_MX" />
-
   <style>
-    /* =========  Diseño base  ========= */
     :root{
-      --bg: #f7fafc;
-      --card:#ffffff;
-      --text:#0f172a;
-      --muted:#475569;
-      --brand:#0ea765;
-      --brand-600:#0b8d56;
-      --ring: rgba(14,167,101,.25);
-      --hair:#e5e7eb;
-      --shadow: 0 10px 30px -12px rgba(2,6,23,.25);
-      --radius: 18px;
+      --bg:#f7fafc; --card:#fff; --text:#0f172a; --muted:#475569;
+      --brand:#0ea765; --brand-600:#0b8d56; --ring:rgba(14,167,101,.25);
+      --hair:#e5e7eb; --shadow:0 10px 30px -12px rgba(2,6,23,.25);
+      --radius:18px;
     }
-    @media (prefers-color-scheme: dark){
-      :root{
-        --bg:#0b1220;
-        --card:#0f1628;
-        --text:#e6edf5;
-        --muted:#9fb0c3;
-        --hair:#1e273a;
-        --shadow: 0 18px 40px -18px rgba(0,0,0,.6);
-      }
+    @media (prefers-color-scheme:dark){
+      :root{--bg:#0b1220;--card:#0f1628;--text:#e6edf5;--muted:#9fb0c3;--hair:#1e273a;--shadow:0 18px 40px -18px rgba(0,0,0,.6)}
     }
-    *,*::before,*::after{ box-sizing:border-box }
-    html{ scroll-behavior:smooth }
-    body{
-      margin:0;
-      font-family:"Inter",system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
-      background:var(--bg);
-      color:var(--text);
-      line-height:1.6;
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
-    }
-    a{ color:inherit; text-decoration:none }
-    img{ max-width:100%; display:block }
-    .container{ width:min(1120px, 92%); margin-inline:auto; }
-    .btn{
-      display:inline-flex; align-items:center; justify-content:center;
-      font-weight:700; padding:.9rem 1.2rem; border-radius:14px;
-      background:var(--brand); color:#fff; border:1px solid transparent;
-      transition:.25s ease; box-shadow:0 8px 20px -10px rgba(14,167,101,.65);
-    }
-    .btn:hover{ transform:translateY(-2px); background:var(--brand-600) }
-    .section{ padding: 80px 0 }
-    .title{
-      font-size: clamp(1.8rem, 2.5vw + 1rem, 2.4rem);
-      line-height:1.2; text-align:center; margin:0 0 20px;
-      font-weight:800; letter-spacing:.2px;
-    }
-    .lead{ text-align:center; color:var(--muted); max-width:56ch; margin:0 auto 8px; }
-    .center{ text-align:center }
+    body{margin:0;font-family:"Inter",sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+    a{text-decoration:none;color:inherit}
+    img{max-width:100%;display:block}
+    .container{width:min(1120px,92%);margin:auto}
+    .btn{display:inline-flex;align-items:center;justify-content:center;font-weight:700;padding:.9rem 1.2rem;border-radius:14px;background:var(--brand);color:#fff;transition:.25s;box-shadow:0 8px 20px -10px rgba(14,167,101,.65)}
+    .btn:hover{transform:translateY(-2px);background:var(--brand-600)}
+    .section{padding:80px 0}
+    .title{text-align:center;font-size:2rem;font-weight:800;margin:0 0 20px}
+    .lead{text-align:center;color:var(--muted);max-width:56ch;margin:0 auto 8px}
 
-    /* ====== Grid & Cards ====== */
-    .grid{ display:grid; gap:22px }
-    .grid-3{ grid-template-columns:repeat(3, 1fr) }
-    .grid-4{ grid-template-columns:repeat(4, 1fr) }
-    .grid-2{ grid-template-columns:repeat(2, 1fr) }
-    @media (max-width: 980px){ .grid-4{ grid-template-columns:repeat(2, 1fr) } }
-    @media (max-width: 780px){ .grid-3,.grid-2,.grid-4{ grid-template-columns:1fr } }
-    .card{
-      background:var(--card); border:1px solid var(--hair); border-radius:var(--radius);
-      padding:22px; box-shadow:var(--shadow); transition:.25s ease; height:100%;
-    }
-    .card:hover{ transform: translateY(-4px); box-shadow: 0 16px 44px -24px rgba(2,6,23,.45) }
-    .pill{
-      width:64px; height:64px; border-radius:16px; display:grid; place-items:center;
-      background:linear-gradient(135deg, var(--brand), color-mix(in oklab, var(--brand) 70%, black));
-      color:#fff; box-shadow:0 12px 26px -18px rgba(14,167,101, .9); margin: 4px 0 12px;
-    }
+    /* Navbar */
+    .nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(10px);background:color-mix(in oklab,var(--bg) 86%,transparent);border-bottom:1px solid var(--hair)}
+    .nav-wrap{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
+    .brand{display:flex;align-items:center;gap:12px;font-weight:800}
+    .brand img{height:56px;object-fit:contain;border-radius:10px}
+    .nav-links{display:flex;gap:28px}
+    .nav-link{color:var(--muted);font-weight:600;padding:8px 10px;border-radius:10px}
+    .nav-link:hover{background:var(--hair);color:var(--text)}
+    .burger{display:none}
+    @media(max-width:860px){.nav-links{display:none}.burger{display:inline-grid;place-items:center}.mobile{display:none;position:absolute;inset:56px 0 auto 0;background:var(--card);border-bottom:1px solid var(--hair)}.mobile a{display:block;padding:14px 24px;border-top:1px solid var(--hair);color:var(--muted)}.mobile.open{display:block}}
 
-    /* =========  Navbar (solapamiento fix)  ========= */
-    .nav{
-      position:sticky; top:0; z-index:50;
-      backdrop-filter:saturate(140%) blur(10px);
-      background: color-mix(in oklab, var(--bg) 86%, transparent);
-      border-bottom:1px solid var(--hair);
-    }
-    .nav-wrap{ display:flex; align-items:center; justify-content:space-between; padding:14px 0; gap:16px; }
-    .brand{ display:flex; align-items:center; gap:12px; font-weight:800; flex:0 0 auto; min-width:160px; }
-    .brand img{ height:56px; width:auto; border-radius:12px; object-fit:cover }
-    .brand span{ white-space:nowrap; }
-    .nav-links{ display:flex; gap:28px; align-items:center; flex:1 1 auto; justify-content:flex-start; }
-    .nav-link{ color:var(--muted); font-weight:600; padding:8px 10px; border-radius:10px; transition:.2s; }
-    .nav-link:hover{ color:var(--text); background:var(--hair) }
+    /* Hero */
+    .hero{padding:120px 0 90px;background:radial-gradient(1200px 600px at 90% -10%,color-mix(in oklab,var(--brand) 22%,transparent)0,transparent 60%)}
+    .hero h1{font-size:3rem;font-weight:800;margin:0 0 14px}
 
-    /* móvil */
-    .burger{ display:none; background:none; border:0; padding:8px; border-radius:10px }
-    @media (max-width: 860px){
-      .nav-links{ display:none }
-      .burger{ display:inline-grid; place-items:center }
-      .mobile{ display:none; position:absolute; inset:56px 0 auto 0; background:var(--card); border-bottom:1px solid var(--hair) }
-      .mobile a{ display:block; padding:14px 24px; border-top:1px solid var(--hair); color:var(--muted); font-weight:600 }
-      .mobile a:hover{ background:color-mix(in oklab, var(--hair), transparent 60%); color:var(--text) }
-      .mobile.open{ display:block }
-    }
+    /* Grid/cards */
+    .grid{display:grid;gap:22px}
+    .grid-3{grid-template-columns:repeat(3,1fr)}
+    .card{background:var(--card);border:1px solid var(--hair);border-radius:var(--radius);padding:22px;box-shadow:var(--shadow)}
+    .card h3{margin:4px 0 6px;font-size:1.25rem}
 
-    /* =========  Hero  ========= */
-    .hero{
-      position:relative; overflow:hidden; padding: clamp(96px, 12vw, 160px) 0 90px;
-      background:
-        radial-gradient(1200px 600px at 90% -10%, color-mix(in oklab, var(--brand) 22%, transparent) 0, transparent 60%),
-        radial-gradient(900px 500px at -10% 0%, color-mix(in oklab, var(--brand) 18%, transparent) 0, transparent 60%);
-      border-bottom:1px solid var(--hair);
-    }
-    .hero h1{
-      font-size: clamp(2rem, 3.2vw + 1rem, 3.6rem);
-      line-height:1.08; margin:0 0 14px; text-wrap:balance;
-      letter-spacing:-.5px; font-weight:800;
-    }
+    /* Carrusel equipo */
+    .team-wrap{display:grid;grid-template-columns:44px 1fr 44px;align-items:center}
+    .team-btn{background:var(--card);border:1px solid var(--hair);border-radius:10px;width:40px;height:40px;cursor:pointer;z-index:2}
+    .team-track{display:flex;overflow:hidden;transition:transform .5s;width:100%}
+    .team-slide{width:100%;flex:0 0 100%;text-align:center}
+    .avatar.xl{width:220px;height:220px;border-radius:16px;margin:auto;overflow:hidden}
+    .avatar.xl img{width:100%;height:100%;object-fit:contain}
+    .team-dots{display:flex;gap:8px;justify-content:center;margin:10px 0 0}
+    .team-dots button{width:8px;height:8px;border-radius:999px;border:0;background:var(--hair)}
+    .team-dots button.active{background:var(--brand)}
 
-    /* =========  Media  ========= */
-    .media{ background:var(--card); border:1px solid var(--hair); border-radius:var(--radius); overflow:hidden; box-shadow:var(--shadow); }
-    .media img{ aspect-ratio: 16 / 10; object-fit: cover; width:100% }
-    .media .caption{ padding:12px 16px; color:var(--muted) }
+    /* Carrusel galería */
+    .gallery-wrap{display:grid;grid-template-columns:44px 1fr 44px;align-items:center}
+    .gallery-btn{background:var(--card);border:1px solid var(--hair);border-radius:10px;width:40px;height:40px;cursor:pointer;z-index:2}
+    .gallery-track{display:flex;overflow:hidden;transition:transform .5s;width:100%}
+    .gallery-slide{width:100%;flex:0 0 100%}
+    .gallery-slide img{width:100%;height:420px;object-fit:contain;background:var(--card)}
+    .gallery-dots{display:flex;gap:8px;justify-content:center;margin:10px 0 0}
+    .gallery-dots button{width:8px;height:8px;border-radius:999px;border:0;background:var(--hair)}
+    .gallery-dots button.active{background:var(--brand)}
 
-    /* =========  Equipo  ========= */
-    .avatar{ width:96px; height:96px; border-radius:50%; overflow:hidden; margin:0 auto 12px; border:2px solid var(--hair) }
-    .role{ color:var(--muted); font-size:.98rem }
-
-    /* =========  Inputs  ========= */
-    .input, textarea{
-      width:100%; padding:12px 14px; border-radius:12px; border:1px solid var(--hair);
-      background:var(--card); color:var(--text); outline:none; transition: .2s ease;
-    }
-    .input:focus, textarea:focus{ border-color: var(--brand); box-shadow: 0 0 0 6px var(--ring) }
-    label{ display:block; font-weight:600; margin: 10px 0 6px }
-    .map{ aspect-ratio:16 / 9; width:100%; border:0; border-radius:14px; overflow:hidden }
-    .contact-card{ display:grid; gap:26px; grid-template-columns: 1.1fr .9fr }
-    @media (max-width: 980px){ .contact-card{ grid-template-columns:1fr } }
-
-    /* =========  Animaciones  ========= */
-    .reveal{ opacity:0; transform: translateY(12px); transition: .6s cubic-bezier(.2,.65,.25,1); }
-    .reveal.show{ opacity:1; transform:none }
-
-    /* Utilidades */
-    .mb-4{ margin-bottom:14px } .mb-6{ margin-bottom:18px } .mb-8{ margin-bottom:24px }
-    .mt-2{ margin-top:8px } .mt-4{ margin-top:14px } .mt-6{ margin-top:18px } .mt-8{ margin-top:24px }
-    .center-narrow{ max-width: 72ch; margin-inline:auto }
-    .split-3 p{ margin:.4rem 0 }
-    .sem-figure{ width:min(520px, 100%) ; margin-inline:auto; border-radius:18px; overflow:hidden; border:1px solid var(--hair); box-shadow:var(--shadow) }
-    .chips{ display:flex; flex-wrap:wrap; gap:10px; justify-content:center }
-    .chip{ border:1px solid var(--hair); padding:8px 12px; border-radius:999px; color:var(--muted); background:var(--card) }
-    .badges{ display:flex; flex-wrap:wrap; gap:10px; justify-content:center }
-    .badge{ background:var(--card); border:1px dashed var(--brand); padding:6px 10px; border-radius:999px; font-weight:600 }
-
-    /* =========  Tabla simple  ========= */
-    table{ width:100%; border-collapse: collapse; }
-    th, td{ padding:12px 10px; border-bottom:1px solid var(--hair); text-align:left; }
-    th{ font-weight:700 }
-
-    /* =========  Timeline  ========= */
-    .timeline{ display:grid; gap:12px; }
-    .titem{ background:var(--card); border:1px solid var(--hair); border-radius:14px; padding:12px 14px }
-
-    /* =========  Footer  ========= */
-    footer{ border-top:1px solid var(--hair); padding:26px 0; }
-    .social{ display:flex; gap:16px; justify-content:center; margin-bottom:10px }
-    .icon{ color:var(--muted) }
-    .icon:hover{ color:var(--text) }
-
-    /* =========  Carrusel Equipo  ========= */
-    .team-wrap{ position:relative; display:grid; grid-template-columns: 44px 1fr 44px; align-items:center; }
-    .team-btn{ background:var(--card); border:1px solid var(--hair); border-radius:10px; width:40px; height:40px; cursor:pointer; }
-    .team-btn:hover{ background:color-mix(in oklab, var(--hair), transparent 60%); }
-    .team-track{ display:flex; overflow:hidden; transition:transform .5s cubic-bezier(.2,.65,.25,1); will-change: transform; }
-    .team-track .team-slide{ width:100%; flex:0 0 100%; display:grid; justify-items:center; padding:22px; }
-    .avatar.xl{ width:220px; height:220px; border-radius:20px; overflow:hidden; border:2px solid var(--hair); cursor:zoom-in; background:var(--card); display:grid; place-items:center; }
-    .avatar.xl img{ width:100%; height:100%; object-fit:contain; }
-    @media (max-width:580px){ .avatar.xl{ width:180px; height:180px } }
-    .team-dots{ display:flex; gap:8px; justify-content:center; margin:10px 0 0 }
-    .team-dots button{ width:8px; height:8px; border-radius:999px; border:0; background:var(--hair); cursor:pointer }
-    .team-dots button.active{ background:var(--brand) }
-
-    /* ===== Galería de muestras (carrusel) ===== */
-    .gallery-wrap{ position:relative; display:grid; grid-template-columns:44px 1fr 44px; align-items:center; }
-    .gallery-btn{ background:var(--card); border:1px solid var(--hair); border-radius:10px; width:40px; height:40px; cursor:pointer; }
-    .gallery-btn:hover{ background:color-mix(in oklab, var(--hair), transparent 60%); }
-    .gallery-track{ display:flex; overflow:hidden; transition:transform .5s cubic-bezier(.2,.65,.25,1); will-change:transform; }
-    .gallery-slide{ width:100%; flex:0 0 100%; margin:0; }
-    .gallery-slide img{ width:100%; height:420px; object-fit:contain; background:var(--card); }
-    .gallery-dots{ display:flex; gap:8px; justify-content:center; margin:10px 0 0 }
-    .gallery-dots button{ width:8px; height:8px; border-radius:999px; border:0; background:var(--hair); cursor:pointer }
-    .gallery-dots button.active{ background:var(--brand) }
-
-    /* Zoom modal */
-    #zoomModal{ position:fixed; inset:0; display:none; place-items:center; z-index:60; }
-    #zoomModal.open{ display:grid; }
-    .zoom-backdrop{ position:absolute; inset:0; background:rgba(0,0,0,.6); }
-    #zoomImg{ position:relative; max-width:min(92vw, 720px); max-height:86vh; border-radius:16px; box-shadow:var(--shadow) }
-    .zoom-close{ position:absolute; top:18px; right:18px; border:0; background:#fff; border-radius:10px; width:38px; height:38px; cursor:pointer }
+    /* Modal zoom */
+    #zoomModal{position:fixed;inset:0;background:rgba(0,0,0,.75);display:none;align-items:center;justify-content:center;z-index:100}
+    #zoomModal.open{display:flex}
+    #zoomModal img{max-width:90%;max-height:90%}
+    .zoom-backdrop{position:absolute;inset:0}
+    .zoom-close{position:absolute;top:20px;right:20px;background:#fff;border:0;border-radius:50%;width:36px;height:36px;cursor:pointer}
   </style>
-
-  <!-- JSON-LD Organización -->
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"Organization",
-    "name":"TraceLab",
-    "url":"https://tracelab.example",
-    "logo":"Logo tracelabbb.jpg",
-    "sameAs":["https://instagram.com/tracelabmx"],
-    "address":{
-      "@type":"PostalAddress",
-      "streetAddress":"Av. 5 de Mayo No. 1",
-      "addressLocality":"Silao de la Victoria",
-      "addressRegion":"Guanajuato",
-      "postalCode":"36130",
-      "addressCountry":"MX"
-    },
-    "contactPoint":[{
-      "@type":"ContactPoint",
-      "contactType":"Ventas",
-      "email":"tracelab81@gmail.com",
-      "telephone":"+52-55-1234-5678",
-      "areaServed":"MX"
-    }]
-  }
-  </script>
 </head>
-
 <body>
 
-  <!-- Barra de aviso normativo -->
-  <div style="background:#0ea765;color:white">
-    <div class="container" style="display:flex;gap:10px;align-items:center;justify-content:center;padding:8px 0">
-      <strong>Referencia de límites (vegetales de hoja):</strong>
-      <span style="opacity:.95">Pb ≤ 1.0 mg/kg · Cd ≤ 0.2 mg/kg</span>
-      <!-- Nota: Codex/UE como criterio de referencia para exportación -->
-    </div>
+<header class="nav">
+  <div class="container nav-wrap">
+    <a href="#inicio" class="brand"><img src="Logo tracelabbb.jpg" alt="TraceLab"><span>TraceLab</span></a>
+    <nav class="nav-links"><a class="nav-link" href="#inicio">Inicio</a><a class="nav-link" href="#servicios">Servicios</a><a class="nav-link" href="#nosotros">Nosotros</a><a class="nav-link" href="#contacto">Contacto</a></nav>
+    <button class="burger" id="burger">☰</button>
+    <div class="mobile" id="mobile"><a href="#inicio">Inicio</a><a href="#servicios">Servicios</a><a href="#nosotros">Nosotros</a><a href="#contacto">Contacto</a></div>
   </div>
+</header>
 
-  <!-- Navbar -->
-  <header class="nav" role="banner">
-    <div class="container nav-wrap">
-      <a href="#inicio" class="brand">
-        <img src="Logo tracelabbb.jpg" alt="Logotipo TraceLab">
-        <span>TraceLab</span>
-      </a>
-      <nav class="nav-links" aria-label="Navegación principal">
-        <a class="nav-link" href="#inicio">Inicio</a>
-        <a class="nav-link" href="#servicios">Servicios</a>
-        <a class="nav-link" href="#metodologia">Metodología</a>
-        <a class="nav-link" href="#normativas">Normativas</a>
-        <a class="nav-link" href="#acreditacion">Acreditación</a>
-        <a class="nav-link" href="#nosotros">Nosotros</a>
-        <a class="nav-link" href="#contacto">Contacto</a>
-      </nav>
-
-      <button class="burger" id="burger" aria-label="Abrir menú">
-        <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
-      </button>
-      <div class="mobile" id="mobile" role="dialog" aria-label="Menú móvil">
-        <a href="#inicio">Inicio</a>
-        <a href="#servicios">Servicios</a>
-        <a href="#metodologia">Metodología</a>
-        <a href="#normativas">Normativas</a>
-        <a href="#acreditacion">Acreditación</a>
-        <a href="#nosotros">Nosotros</a>
-        <a href="#contacto">Contacto</a>
-      </div>
-    </div>
-  </header>
-
-  <!-- Hero -->
-  <section id="inicio" class="hero">
-    <div class="container hero-inner">
-      <h1 class="center reveal">Seguridad Alimentaria con Rigor Científico</h1>
-      <p class="center center-narrow reveal">
-        Especialistas en la detección de metales pesados en hortalizas, fortaleciendo la competitividad del sector agrícola en el Bajío.
-      </p>
-      <div class="center reveal" style="margin-top:6px">
-        <a class="btn"
-           href="mailto:tracelab81@gmail.com?subject=Cotizaci%C3%B3n%20TraceLab&body=Hola%20TraceLab%2C%0AQuiero%20cotizar%20el%20an%C3%A1lisis%20de%3A%0A-%20Matriz%3A%20_________________%0A-%20N.%20de%20muestras%3A%20_____%0A-%20Ubicaci%C3%B3n%3A%20_________________%0AObservaciones%3A%20_________________%0A%0AGracias.">
-          Cotizar ahora
-        </a>
-      </div>
-      <div class="chips mt-8 reveal" aria-hidden="true">
-        <span class="chip">Cd</span><span class="chip">Pb</span><span class="chip">Codex · UE · FDA</span><span class="chip">Semaforización</span><span class="chip">QA/QC</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- Propuesta de valor rápida + Precio -->
-  <section class="section">
-    <div class="container">
-      <div class="grid grid-3">
-        <div class="card reveal">
-          <div class="pill" aria-hidden="true">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M4 12h16M4 7h16M4 17h10" stroke="currentColor" stroke-width="1.6"/></svg>
-          </div>
-          <h3>Propuesta de Valor</h3>
-          <p>Resultados claros con semaforización y trazabilidad QA/QC para decisiones comerciales rápidas.</p>
-        </div>
-        <div class="card reveal">
-          <div class="pill" aria-hidden="true">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M8 4h8v16H8z" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="8" r="1.4" fill="currentColor"/><circle cx="12" cy="12" r="1.4" fill="currentColor"/><circle cx="12" cy="16" r="1.4" fill="currentColor"/></svg>
-          </div>
-          <h3>QA/QC como estándar</h3>
-          <div class="badges" aria-label="Controles de calidad">
-            <span class="badge">Blanco</span><span class="badge">Duplicado</span><span class="badge">MS</span><span class="badge">MSD</span><span class="badge">CCV/10 lecturas</span>
-          </div>
-          <p class="mt-4" style="color:var(--muted)">Aplicados en cada corrida analítica.</p>
-        </div>
-        <div class="card reveal">
-          <div class="pill" aria-hidden="true">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="1.6"/></svg>
-          </div>
-          <h3>Desde $1,989 MXN/muestra</h3>
-          <p style="color:var(--muted)">Tarifa de referencia para Cd y Pb en hortalizas. <em>Solicita cotización por volumen.</em></p>
-          <a class="btn mt-4" style="width:100%"
-             href="mailto:tracelab81@gmail.com?subject=Cotizaci%C3%B3n%20TraceLab&body=Hola%20TraceLab%2C%0AQuiero%20cotizar%20el%20an%C3%A1lisis%20de%3A%0A-%20Matriz%3A%20_________________%0A-%20N.%20de%20muestras%3A%20_____%0A-%20Ubicaci%C3%B3n%3A%20_________________%0AObservaciones%3A%20_________________%0A%0AGracias.">
-            Cotizar ahora
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Servicios -->
-  <section id="servicios" class="section" style="padding-top: 50px">
-    <div class="container">
-      <h2 class="title reveal">Nuestros Servicios</h2>
-      <p class="lead reveal">Soluciones analíticas para decisiones rápidas y seguras.</p>
-
-      <div class="grid grid-4 mt-6">
-        <article class="card reveal">
-          <div class="pill" aria-hidden="true">
-            <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M7 3h10a2 2 0 0 1 2 2v14l-7-3-7 3V5a2 2 0 0 1 2-2Z" stroke="currentColor" stroke-width="1.6"/></svg>
-          </div>
-          <h3>Análisis de Cadmio y Plomo</h3>
-          <p>Cuantificación de Cd y Pb en hortalizas frescas mediante metodologías robustas y validadas.</p>
-        </article>
-
-        <article class="card reveal">
-          <div class="pill" aria-hidden="true">
-            <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M8 4h8v16H8z" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="8" r="1.4" fill="currentColor"/><circle cx="12" cy="12" r="1.4" fill="currentColor"/><circle cx="12" cy="16" r="1.4" fill="currentColor"/></svg>
-          </div>
-          <h3>Reportes con Semáforo</h3>
-          <p>Visual verde/amarillo/rojo para interpretar resultados de un vistazo y decidir acciones.</p>
-        </article>
-
-        <article class="card reveal">
-          <div class="pill" aria-hidden="true">
-            <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M4 7h16M4 12h10M4 17h7" stroke="currentColor" stroke-width="1.6"/></svg>
-          </div>
-          <h3>Consultoría y Asesoría</h3>
-          <p>Muestreo, normativas internacionales y estrategias de inocuidad y competitividad.</p>
-        </article>
-
-        <article class="card reveal">
-          <div class="pill" aria-hidden="true">
-            <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="1.6"/></svg>
-          </div>
-          <h3>Futuros Análisis</h3>
-          <p>Expansión a otros contaminantes inorgánicos según necesidades del sector.</p>
-        </article>
-      </div>
-
-      <div class="mt-8 center reveal">
-        <h3 class="title" style="font-size:1.6rem; margin-bottom:12px">El Semáforo de Cumplimiento</h3>
-        <figure class="sem-figure">
-          <img src="Semaforo.jpg" alt="Ejemplo de reporte con sistema de semaforización">
-        </figure>
-        <p class="lead" style="margin-top:12px">Así se visualizan los niveles y su interpretación.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Metodología (simple) -->
-  <section id="metodologia" class="section" style="padding-top:50px">
-    <div class="container">
-      <h2 class="title reveal">Metodología EPA 3050B + FAAS</h2>
-      <p class="lead reveal">Proceso claro y trazable para cuantificar Cd y Pb en hortalizas.</p>
-      <div class="grid grid-4 mt-6">
-        <div class="card reveal">
-          <h3>Recepción & Homogenización</h3>
-          <p>Muestreo compuesto del lote y preparación de porción analítica homogenizada.</p>
-        </div>
-        <div class="card reveal">
-          <h3>Digestión Ácida</h3>
-          <p>Digestión con mezcla ácida conforme a EPA 3050B para liberar los analitos.</p>
-        </div>
-        <div class="card reveal">
-          <h3>FAAS</h3>
-          <p>Se emplea <strong>espectrofotómetro de absorción atómica (FAAS)</strong> con curva de calibración trazable.</p>
-        </div>
-        <div class="card reveal">
-          <h3>QA/QC</h3>
-          <p>Blanco, Duplicado, MS/MSD y CCV cada 10 lecturas. Resultados en mg/kg con semaforización.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Normativas y límites -->
-  <section id="normativas" class="section" style="padding-top:50px">
-    <div class="container">
-      <h2 class="title reveal">Normativas de Referencia</h2>
-      <p class="lead reveal">Interpretamos los resultados con base en estándares internacionales.</p>
-      <div class="card mt-6 reveal">
-        <div style="overflow:auto">
-          <table aria-label="Tabla de límites de referencia por normativa">
-            <thead><tr><th>Norma</th><th>Matriz</th><th>Pb (mg/kg)</th><th>Cd (mg/kg)</th></tr></thead>
-            <tbody>
-              <tr><td>Codex / UE</td><td>Vegetales de hoja</td><td>1.0</td><td>0.2</td></tr>
-              <tr><td>FDA (referencial)</td><td>Ver nota</td><td>—</td><td>—</td></tr>
-            </tbody>
-          </table>
-        </div>
-        <p class="mt-4" style="color:var(--muted)">
-          <strong>Nota FDA:</strong> FDA publica <em>action levels</em> para algunos productos específicos
-          (por ejemplo, alimentos procesados para bebés/niños, ciertos jugos y dulces),
-          pero no fija límites generales de Cd/Pb para hortalizas de hoja destinadas a población general.
-          En exportación a EE. UU., muchos compradores usan criterios Codex/UE y especificaciones privadas.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Roadmap de Acreditación -->
-  <section id="acreditacion" class="section" style="padding-top:50px">
-    <div class="container">
-      <h2 class="title reveal">Hoja de Ruta a la Acreditación</h2>
-      <p class="lead reveal">Plan de 3 meses: instalación, validación, piloto y lanzamiento.</p>
-      <div class="timeline mt-6">
-        <div class="titem reveal"><strong>Sep 12–25:</strong> Adecuación del local y seguridad.</div>
-        <div class="titem reveal"><strong>Sep 26–Oct 9:</strong> Compra FAAS, hotplates, cristalería, mobiliario.</div>
-        <div class="titem reveal"><strong>Oct 10–20:</strong> Instalación FAAS y gases; calibración inicial.</div>
-        <div class="titem reveal"><strong>Oct 15–24:</strong> Reactivos y consumibles.</div>
-        <div class="titem reveal"><strong>Oct 25–Nov 4:</strong> Pruebas de método (EPA 3050B + FAAS).</div>
-        <div class="titem reveal"><strong>Nov 5–19:</strong> Capacitación QA/QC interna.</div>
-        <div class="titem reveal"><strong>Nov 20–Dic 4:</strong> Piloto (20 muestras reales).</div>
-        <div class="titem reveal"><strong>Dic 5–20:</strong> Lanzamiento comercial y difusión.</div>
-      </div>
-      <p class="mt-4 center" style="color:var(--muted)">Objetivo: sentar bases para NMX-EC-17025 y relaciones con exportadores.</p>
-    </div>
-  </section>
-
-  <!-- Galería / Ejemplos de Muestra (carrusel + zoom) -->
-  <section class="section" id="galeria">
-    <div class="container">
-      <h3 class="title reveal" style="font-size:1.6rem">Ejemplos de Muestra</h3>
-      <div class="card reveal" style="overflow:hidden">
-        <div class="gallery-wrap">
-          <button class="gallery-btn" type="button" aria-label="Anterior" data-dir="-1">&#10094;</button>
-          <div class="gallery-track" id="galleryTrack">
-            <figure class="gallery-slide">
-              <img src="Brocoli.jpg" alt="Brócoli con etiqueta de cumplimiento" />
-              <figcaption class="caption">Brócoli con semaforización.</figcaption>
-            </figure>
-            <figure class="gallery-slide">
-              <img src="Fresa.jpg" alt="Fresas con etiqueta de cumplimiento" />
-              <figcaption class="caption">Fresas con etiqueta de cumplimiento.</figcaption>
-            </figure>
-            <figure class="gallery-slide">
-              <img src="Pimientos.jpg" alt="Pimientos con etiqueta de análisis" />
-              <figcaption class="caption">Pimientos con etiqueta de análisis.</figcaption>
-            </figure>
-          </div>
-          <button class="gallery-btn" type="button" aria-label="Siguiente" data-dir="1">&#10095;</button>
-        </div>
-        <div class="gallery-dots" id="galleryDots" aria-label="Paginación de galería"></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Nosotros -->
-  <section id="nosotros" class="section" style="padding-top: 50px">
-    <div class="container">
-      <h2 class="title reveal">Nosotros</h2>
-      <p class="lead center-narrow reveal">
-        TraceLab es un laboratorio de análisis químico fundado por estudiantes de últimos semestres de la Licenciatura en Química de la Universidad de Guanajuato. Nacimos para fortalecer la seguridad alimentaria en el Bajío.
-      </p>
-
-      <h3 class="title mt-8 reveal" style="font-size:1.4rem">Nuestro Equipo Fundador</h3>
-
-      <div class="card reveal" style="overflow:hidden">
-        <div class="team-wrap">
-          <button class="team-btn" type="button" aria-label="Anterior" data-dir="-1">&#10094;</button>
-          <div class="team-track" id="teamTrack">
-            <div class="team-slide">
-              <div class="avatar xl"><img src="Kat.jpg" alt="Katyutzka Villarreal"></div>
-              <h3 class="mt-2">Katyutzka Villarreal</h3>
-              <p class="role">Dirección General y Finanzas</p>
-            </div>
-            <div class="team-slide">
-              <div class="avatar xl"><img src="Flavio.jpg" alt="Flavio César Rodríguez"></div>
-              <h3 class="mt-2">Flavio César Rodríguez</h3>
-              <p class="role">Responsable Técnico</p>
-            </div>
-            <div class="team-slide">
-              <div class="avatar xl"><img src="Paola.jpg" alt="Paola Montserrat Gutiérrez"></div>
-              <h3 class="mt-2">Paola Montserrat Gutiérrez</h3>
-              <p class="role">Coordinadora de Calidad</p>
-            </div>
-            <div class="team-slide">
-              <div class="avatar xl"><img src="Willy.jpg" alt="Willy Germain Rodriguez"></div>
-              <h3 class="mt-2">Willy Germain Rodriguez</h3>
-              <p class="role">Área Comercial y Vinculación</p>
-            </div>
-          </div>
-          <button class="team-btn" type="button" aria-label="Siguiente" data-dir="1">&#10095;</button>
-        </div>
-        <div class="team-dots" id="teamDots" aria-label="Paginación del carrusel"></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Contacto -->
-  <section id="contacto" class="section" style="padding-top: 50px">
-    <div class="container">
-      <h2 class="title reveal">Contacto</h2>
-
-      <div class="contact-card mt-6">
-        <!-- Formulario -->
-        <div class="card reveal">
-          <h3 style="margin-top:0">Envíanos un mensaje</h3>
-          <form id="contactForm" novalidate>
-            <label for="name">Nombre</label>
-            <input class="input" type="text" id="name" name="name" placeholder="Tu nombre" required>
-
-            <label for="email" class="mt-4">Email</label>
-            <input class="input" type="email" id="email" name="email" placeholder="tucorreo@dominio.com" required>
-
-            <label for="message" class="mt-4">Mensaje</label>
-            <textarea class="input" id="message" name="message" rows="4" placeholder="¿En qué podemos ayudarte?" required></textarea>
-
-            <button type="submit" class="btn mt-6" style="width:100%">Enviar Mensaje</button>
-          </form>
-          <div id="form-status" class="mt-4" role="status" aria-live="polite" style="display:none"></div>
-        </div>
-
-        <!-- Mapa y datos -->
-        <div class="card reveal">
-          <h3 style="margin-top:0">Nuestra Ubicación</h3>
-          <iframe class="map"
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3725.794215267499!2d-101.4287820847038!3d20.94191069502854!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x842b930d0a7a0001%3A0x7e52a4e98f480a42!2sAv.%205%20de%20Mayo%201%2C%20Centro%2C%2036130%20Silao%20de%20la%20Victoria%2C%20Gto.!5e0!3m2!1ses-419!2smx!4v1625078516098!5m2!1ses-419!2smx"
-            allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-
-          <p class="mt-4"><strong>Dirección:</strong> Av. 5 de Mayo No. 1, Silao de la Victoria, Guanajuato, C.P. 36130</p>
-          <p class="mt-2"><strong>Email:</strong> <a href="mailto:tracelab81@gmail.com" style="color:var(--brand)">tracelab81@gmail.com</a></p>
-          <p class="mt-2"><strong>Teléfono:</strong> <a href="tel:+525512345678" style="color:var(--brand)">+52 55 1234 5678</a></p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer role="contentinfo">
-    <div class="container center">
-      <div class="social">
-        <a class="icon" href="https://instagram.com/tracelabmx" target="_blank" rel="noopener" aria-label="Instagram">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-            <path d="M12.315 2c2.43 0 2.76.014 3.71.054 1.05.043 1.63.228 2.06.398.5.2.92.43 1.34.85.42.42.65.84.85 1.34.17.43.35 1.01.4 2.06.04 1.05.05 1.38.05 3.71s-.01 2.6-.05 3.65c-.05 1.05-.23 1.63-.4 2.06-.2.5-.43.92-.85 1.34-.42.42-.84.65-1.34.85-.43.17-1.01.35-2.06.4-.95.04-1.28.05-3.65.05s-2.6-.01-3.65-.05c-1.05-.05-1.63-.23-2.06-.4-.5-.2-.92-.43-1.34-.85-.42-.42-.65-.84-.85-1.34-.17-.43-.35-1.01-.4-2.06-.04-1.05-.05-1.38-.05-3.65s.01-2.6.05-3.65c.05-1.05.23-1.63.4-2.06.2-.5.43-.92.85-1.34.42-.42.84-.65 1.34-.85.43-.17 1.01-.35 2.06-.4 1.05-.04 1.38-.05 3.71-.05Z"/>
-            <circle cx="12" cy="12" r="3"/>
-          </svg>
-        </a>
-      </div>
-      <small>&copy; 2025 TraceLab. Todos los derechos reservados.</small>
-    </div>
-  </footer>
-
-  <script>
-    // Menú móvil
-    const burger = document.getElementById('burger');
-    const mobile = document.getElementById('mobile');
-    burger?.addEventListener('click', ()=> mobile.classList.toggle('open'));
-    mobile?.querySelectorAll('a').forEach(a=> a.addEventListener('click', ()=> mobile.classList.remove('open')));
-
-    // Formulario (demo)
-    function handleFormSubmit(e){
-      e.preventDefault();
-      const form = e.target;
-      const ok = form.checkValidity();
-      const status = document.getElementById('form-status');
-      if(!ok){
-        status.style.display='block';
-        status.style.color = '#ef4444';
-        status.textContent = 'Por favor, completa los campos requeridos.';
-        return;
-      }
-      status.style.display='block';
-      status.style.color = '#10b981';
-      status.textContent = '¡Mensaje enviado con éxito! Nos pondremos en contacto contigo pronto.';
-      form.reset();
-    }
-    document.getElementById('contactForm')?.addEventListener('submit', handleFormSubmit);
-
-    // Aparición al hacer scroll
-    const io = new IntersectionObserver(entries=>{
-      entries.forEach(entry=>{
-        if(entry.isIntersecting){ entry.target.classList.add('show'); io.unobserve(entry.target); }
-      });
-    },{ threshold:.15 });
-    document.querySelectorAll('.reveal').forEach(el=> io.observe(el));
-
-    // Carrusel equipo (robusto)
-    (function(){
-      const track = document.getElementById('teamTrack');
-      if(!track) return;
-
-      const slides = Array.from(track.children);
-      let idx = 0;
-
-      // Dots
-      const dotsBox = document.getElementById('teamDots');
-      dotsBox.innerHTML = '';
-      slides.forEach((_,i)=>{
-        const b = document.createElement('button');
-        b.type = 'button';
-        b.setAttribute('aria-label', `Ir al perfil ${i+1}`);
-        b.addEventListener('click', ()=> go(i));
-        dotsBox.appendChild(b);
-      });
-      const dots = Array.from(dotsBox.children);
-
-      // Flechas
-      const prevBtn = document.querySelector('.team-btn[data-dir="-1"]');
-      const nextBtn = document.querySelector('.team-btn[data-dir="1"]');
-      [prevBtn, nextBtn].forEach(b=> b?.setAttribute('type','button'));
-      prevBtn?.addEventListener('click', ()=> go(idx-1));
-      nextBtn?.addEventListener('click', ()=> go(idx+1));
-
-      // Teclado
-      track.setAttribute('tabindex','0');
-      track.addEventListener('keydown', (e)=>{
-        if(e.key === 'ArrowRight') go(idx+1);
-        if(e.key === 'ArrowLeft')  go(idx-1);
-      });
-
-      function go(i){
-        const n = slides.length;
-        idx = ( (i % n) + n ) % n;
-        track.style.transform = `translateX(-${idx*100}%)`;
-        dots.forEach((d,k)=> d.classList.toggle('active', k===idx));
-      }
-
-      go(0);
-
-      // Zoom modal
-      const modal = document.getElementById('zoomModal');
-      const zoomImg = document.getElementById('zoomImg');
-      track.querySelectorAll('.avatar.xl img').forEach(img=>{
-        img.addEventListener('click', ()=>{
-          zoomImg.src = img.src;
-          zoomImg.alt = img.alt;
-          modal.classList.add('open');
-          modal.setAttribute('aria-hidden','false');
-        });
-      });
-      modal.querySelector('.zoom-close')?.addEventListener('click', closeZoom);
-      modal.querySelector('.zoom-backdrop')?.addEventListener('click', closeZoom);
-      function closeZoom(){
-        modal.classList.remove('open');
-        modal.setAttribute('aria-hidden','true');
-        zoomImg.removeAttribute('src');
-      }
-    })();
-
-    // Galería de muestras (carrusel + zoom)
-    (function(){
-      const track = document.getElementById('galleryTrack');
-      if(!track) return;
-
-      const slides = Array.from(track.children);
-      let idx = 0;
-
-      // Dots
-      const dotsBox = document.getElementById('galleryDots');
-      dotsBox.innerHTML='';
-      slides.forEach((_,i)=>{
-        const b = document.createElement('button');
-        b.type='button';
-        b.setAttribute('aria-label', 'Ir a imagen ' + (i+1));
-        b.addEventListener('click', ()=> go(i));
-        dotsBox.appendChild(b);
-      });
-      const dots = Array.from(dotsBox.children);
-
-      // Flechas
-      const prev = document.querySelector('.gallery-btn[data-dir="-1"]');
-      const next = document.querySelector('.gallery-btn[data-dir="1"]');
-      prev?.addEventListener('click', ()=> go(idx-1));
-      next?.addEventListener('click', ()=> go(idx+1));
-
-      // Teclado
-      track.setAttribute('tabindex','0');
-      track.addEventListener('keydown', e=>{
-        if(e.key==='ArrowRight') go(idx+1);
-        if(e.key==='ArrowLeft')  go(idx-1);
-      });
-
-      function go(i){
-        const n = slides.length;
-        idx = ((i % n) + n) % n;
-        track.style.transform = `translateX(-${idx*100}%)`;
-        dots.forEach((d,k)=> d.classList.toggle('active', k===idx));
-      }
-      go(0);
-
-      // Zoom (reutiliza el modal del equipo)
-      const modal = document.getElementById('zoomModal');
-      const zoomImg = document.getElementById('zoomImg');
-      track.querySelectorAll('img').forEach(img=>{
-        img.style.cursor='zoom-in';
-        img.addEventListener('click', ()=>{
-          zoomImg.src = img.src;
-          zoomImg.alt = img.alt;
-          modal.classList.add('open');
-          modal.setAttribute('aria-hidden','false');
-        });
-      });
-      modal.querySelector('.zoom-close')?.addEventListener('click', closeZoom);
-      modal.querySelector('.zoom-backdrop')?.addEventListener('click', closeZoom);
-      function closeZoom(){
-        modal.classList.remove('open');
-        modal.setAttribute('aria-hidden','true');
-        zoomImg.removeAttribute('src');
-      }
-    })();
-  </script>
-
-  <!-- Modal de zoom (fuera de scripts para accesibilidad) -->
-  <div id="zoomModal" aria-hidden="true">
-    <div class="zoom-backdrop"></div>
-    <img id="zoomImg" alt="">
-    <button class="zoom-close" aria-label="Cerrar">&#10005;</button>
+<section id="inicio" class="hero">
+  <div class="container">
+    <h1>Seguridad Alimentaria con Rigor Científico</h1>
+    <p>Especialistas en la detección de metales pesados en hortalizas.</p>
+    <a class="btn" href="mailto:tracelab81@gmail.com?subject=Cotización TraceLab">Cotizar ahora</a>
   </div>
+</section>
+
+<section class="section">
+  <div class="container grid grid-3">
+    <div class="card"><h3>Desde $1,989 MXN/muestra</h3><p>Tarifa de referencia para Cd y Pb. Solicita cotización por volumen.</p></div>
+  </div>
+</section>
+
+<section id="nosotros" class="section">
+  <div class="container">
+    <h2 class="title">Nuestro Equipo Fundador</h2>
+    <div class="team-wrap">
+      <button class="team-btn" type="button" data-dir="-1">&#10094;</button>
+      <div class="team-track" id="teamTrack">
+        <div class="team-slide"><div class="avatar xl"><img src="Kat.jpg"></div><h3>Katyutzka</h3><p>Dirección</p></div>
+        <div class="team-slide"><div class="avatar xl"><img src="Flavio.jpg"></div><h3>Flavio</h3><p>Técnico</p></div>
+        <div class="team-slide"><div class="avatar xl"><img src="Paola.jpg"></div><h3>Paola</h3><p>Calidad</p></div>
+        <div class="team-slide"><div class="avatar xl"><img src="Willy.jpg"></div><h3>Willy</h3><p>Comercial</p></div>
+      </div>
+      <button class="team-btn" type="button" data-dir="1">&#10095;</button>
+    </div>
+    <div class="team-dots" id="teamDots"></div>
+  </div>
+</section>
+
+<section id="galeria" class="section">
+  <div class="container">
+    <h2 class="title">Ejemplos de Muestra</h2>
+    <div class="gallery-wrap">
+      <button class="gallery-btn" type="button" data-dir="-1">&#10094;</button>
+      <div class="gallery-track" id="galleryTrack">
+        <div class="gallery-slide"><img src="Brocoli.jpg" alt="Brócoli"></div>
+        <div class="gallery-slide"><img src="Fresa.jpg" alt="Fresa"></div>
+        <div class="gallery-slide"><img src="Pimientos.jpg" alt="Pimientos"></div>
+      </div>
+      <button class="gallery-btn" type="button" data-dir="1">&#10095;</button>
+    </div>
+    <div class="gallery-dots" id="galleryDots"></div>
+  </div>
+</section>
+
+<div id="zoomModal"><div class="zoom-backdrop"></div><img id="zoomImg"><button class="zoom-close">&#10005;</button></div>
+
+<script>
+document.addEventListener('DOMContentLoaded',()=>{
+  const modal=document.getElementById('zoomModal'),zoomImg=document.getElementById('zoomImg');
+  function openZoom(src,alt){zoomImg.src=src;zoomImg.alt=alt;modal.classList.add('open');}
+  modal.querySelector('.zoom-close').addEventListener('click',()=>modal.classList.remove('open'));
+  modal.querySelector('.zoom-backdrop').addEventListener('click',()=>modal.classList.remove('open'));
+  function initCarousel(trackSel,dotsSel,prevSel,nextSel,slideSel,zoomSel){
+    const track=document.querySelector(trackSel);if(!track)return;const slides=Array.from(track.querySelectorAll(slideSel));let idx=0;
+    const dotsBox=document.querySelector(dotsSel);if(dotsBox){dotsBox.innerHTML='';slides.forEach((_,i)=>{const b=document.createElement('button');b.type='button';b.addEventListener('click',()=>go(i));dotsBox.appendChild(b);});}
+    const dots=dotsBox?Array.from(dotsBox.children):[];
+    document.querySelector(prevSel)?.addEventListener('click',()=>go(idx-1));
+    document.querySelector(nextSel)?.addEventListener('click',()=>go(idx+1));
+    if(zoomSel){track.querySelectorAll(zoomSel).forEach(img=>img.addEventListener('click',()=>openZoom(img.src,img.alt)));}
+    function go(i){const n=slides.length;idx=((i%n)+n)%n;track.style.transform=`translateX(-${idx*100}%)`;dots.forEach((d,k)=>d.classList.toggle('active',k===idx));}
+    go(0);
+  }
+  initCarousel('#teamTrack','#teamDots','.team-btn[data-dir="-1"]','.team-btn[data-dir="1"]','.team-slide','img');
+  initCarousel('#galleryTrack','#galleryDots','.gallery-btn[data-dir="-1"]','.gallery-btn[data-dir="1"]','.gallery-slide','img');
+});
+</script>
 </body>
 </html>
+
