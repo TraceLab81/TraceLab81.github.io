@@ -91,7 +91,7 @@
       color:#fff; box-shadow:0 12px 26px -18px rgba(14,167,101, .9); margin: 4px 0 12px;
     }
 
-    /* =========  Navbar (solapamiento fix)  ========= */
+    /* =========  Navbar  ========= */
     .nav{
       position:sticky; top:0; z-index:50;
       backdrop-filter:saturate(140%) blur(10px);
@@ -100,7 +100,7 @@
     }
     .nav-wrap{ display:flex; align-items:center; justify-content:space-between; padding:14px 0; gap:16px; }
     .brand{ display:flex; align-items:center; gap:12px; font-weight:800; flex:0 0 auto; min-width:160px; }
-    .brand img{ height:56px; width:auto; border-radius:12px; object-fit:cover } /* ↑ antes 40px */
+    .brand img{ height:56px; width:auto; border-radius:12px; object-fit:cover }
     .brand span{ white-space:nowrap; }
     .nav-links{ display:flex; gap:28px; align-items:center; flex:1 1 auto; justify-content:flex-start; }
     .nav-link{ color:var(--muted); font-weight:600; padding:8px 10px; border-radius:10px; transition:.2s; }
@@ -138,6 +138,17 @@
 
     /* =========  Equipo  ========= */
     .avatar{ width:96px; height:96px; border-radius:50%; overflow:hidden; margin:0 auto 12px; border:2px solid var(--hair) }
+    .avatar.xl{
+      width: 180px;
+      height: 180px;
+      border-radius: 20px;
+      overflow: hidden;
+      border: 2px solid var(--hair);
+      cursor: default;
+    }
+    @media (max-width:580px){
+      .avatar.xl{ width: 160px; height: 160px }
+    }
     .role{ color:var(--muted); font-size:.98rem }
 
     /* =========  Inputs  ========= */
@@ -180,26 +191,6 @@
     .social{ display:flex; gap:16px; justify-content:center; margin-bottom:10px }
     .icon{ color:var(--muted) }
     .icon:hover{ color:var(--text) }
-
-    /* =========  Carrusel Equipo  ========= */
-    .team-wrap{ position:relative; display:grid; grid-template-columns: 44px 1fr 44px; align-items:center; }
-    .team-btn{ background:var(--card); border:1px solid var(--hair); border-radius:10px; width:40px; height:40px; cursor:pointer; }
-    .team-btn:hover{ background:color-mix(in oklab, var(--hair), transparent 60%); }
-    .team-track{ overflow:hidden; }
-    .team-track .team-slide{ width:100%; flex:0 0 100%; display:grid; justify-items:center; padding:22px; }
-    .team-track{ display:flex; transition:transform .5s cubic-bezier(.2,.65,.25,1); }
-    .avatar.xl{ width:160px; height:160px; border-radius:20px; overflow:hidden; border:2px solid var(--hair); cursor:zoom-in; }
-    @media (max-width:580px){ .avatar.xl{ width:140px; height:140px } }
-    .team-dots{ display:flex; gap:8px; justify-content:center; margin:10px 0 0 }
-    .team-dots button{ width:8px; height:8px; border-radius:999px; border:0; background:var(--hair); cursor:pointer }
-    .team-dots button.active{ background:var(--brand) }
-
-    /* Zoom modal */
-    #zoomModal{ position:fixed; inset:0; display:none; place-items:center; z-index:60; }
-    #zoomModal.open{ display:grid; }
-    .zoom-backdrop{ position:absolute; inset:0; background:rgba(0,0,0,.6); }
-    #zoomImg{ position:relative; max-width:min(92vw, 720px); max-height:86vh; border-radius:16px; box-shadow:var(--shadow) }
-    .zoom-close{ position:absolute; top:18px; right:18px; border:0; background:#fff; border-radius:10px; width:38px; height:38px; cursor:pointer }
   </style>
 
   <!-- JSON-LD Organización -->
@@ -316,10 +307,10 @@
           </div>
           <h3>Desde $1,989 MXN/muestra</h3>
           <p style="color:var(--muted)">Tarifa de referencia para Cd y Pb en hortalizas. <em>Solicita cotización por volumen.</em></p>
-	<a class="btn mt-4" style="width:100%"
-   href="mailto:tracelab81@gmail.com?subject=Cotizaci%C3%B3n%20TraceLab&body=Hola%20TraceLab%2C%0AQuiero%20cotizar%20el%20an%C3%A1lisis%20de%3A%0A-%20Matriz%3A%20_________________%0A-%20N.%20de%20muestras%3A%20_____%0A-%20Ubicaci%C3%B3n%3A%20_________________%0AObservaciones%3A%20_________________%0A%0AGracias.">
-  Cotizar ahora
-</a>
+          <a class="btn mt-4" style="width:100%"
+             href="mailto:tracelab81@gmail.com?subject=Cotizaci%C3%B3n%20TraceLab&body=Hola%20TraceLab%2C%0AQuiero%20cotizar%20el%20an%C3%A1lisis%20de%3A%0A-%20Matriz%3A%20_________________%0A-%20N.%20de%20muestras%3A%20_____%0A-%20Ubicaci%C3%B3n%3A%20_________________%0AObservaciones%3A%20_________________%0A%0AGracias.">
+            Cotizar ahora
+          </a>
         </div>
       </div>
     </div>
@@ -476,38 +467,28 @@
 
       <h3 class="title mt-8 reveal" style="font-size:1.4rem">Nuestro Equipo Fundador</h3>
 
-      <div class="card reveal" style="overflow:hidden">
-        <div class="team-wrap">
-          <button class="team-btn" aria-label="Anterior" data-dir="-1">&#10094;</button>
-          <div class="team-track" id="teamTrack">
-            <!-- Slide 1 -->
-            <div class="team-slide">
-              <div class="avatar xl"><img src="Kat.jpg" alt="Katyutzka Villarreal"></div>
-              <h3 class="mt-2">Katyutzka Villarreal</h3>
-              <p class="role">Dirección General y Finanzas</p>
-            </div>
-            <!-- Slide 2 -->
-            <div class="team-slide">
-              <div class="avatar xl"><img src="Flavio.jpg" alt="Flavio César Rodríguez"></div>
-              <h3 class="mt-2">Flavio César Rodríguez</h3>
-              <p class="role">Responsable Técnico</p>
-            </div>
-            <!-- Slide 3 -->
-            <div class="team-slide">
-              <div class="avatar xl"><img src="Paola.jpg" alt="Paola Montserrat Gutiérrez"></div>
-              <h3 class="mt-2">Paola Montserrat Gutiérrez</h3>
-              <p class="role">Coordinadora de Calidad</p>
-            </div>
-            <!-- Slide 4 -->
-            <div class="team-slide">
-              <div class="avatar xl"><img src="Willy.jpg" alt="Willy Germain Rodriguez"></div>
-              <h3 class="mt-2">Willy Germain Rodriguez</h3>
-              <p class="role">Área Comercial y Vinculación</p>
-            </div>
-          </div>
-          <button class="team-btn" aria-label="Siguiente" data-dir="1">&#10095;</button>
+      <!-- Grid simple sin carrusel -->
+      <div class="grid grid-4 mt-4">
+        <div class="card center reveal">
+          <div class="avatar xl"><img src="Kat.jpg" alt="Katyutzka Villarreal" /></div>
+          <h3 class="mt-2">Katyutzka Villarreal</h3>
+          <p class="role">Dirección General y Finanzas</p>
         </div>
-        <div class="team-dots" id="teamDots" aria-label="Paginación del carrusel"></div>
+        <div class="card center reveal">
+          <div class="avatar xl"><img src="Flavio.jpg" alt="Flavio César Rodríguez" /></div>
+          <h3 class="mt-2">Flavio César Rodríguez</h3>
+          <p class="role">Responsable Técnico</p>
+        </div>
+        <div class="card center reveal">
+          <div class="avatar xl"><img src="Paola.jpg" alt="Paola Montserrat Gutiérrez" /></div>
+          <h3 class="mt-2">Paola Montserrat Gutiérrez</h3>
+          <p class="role">Coordinadora de Calidad</p>
+        </div>
+        <div class="card center reveal">
+          <div class="avatar xl"><img src="Willy.jpg" alt="Willy Germain Rodriguez" /></div>
+          <h3 class="mt-2">Willy Germain Rodriguez</h3>
+          <p class="role">Área Comercial y Vinculación</p>
+        </div>
       </div>
     </div>
   </section>
@@ -551,7 +532,7 @@
     </div>
   </section>
 
-  <!-- Footer -->
+  <!-- Footer solo Instagram -->
   <footer role="contentinfo">
     <div class="container center">
       <div class="social">
@@ -599,62 +580,8 @@
       });
     },{ threshold:.15 });
     document.querySelectorAll('.reveal').forEach(el=> io.observe(el));
-
-    // Carrusel equipo + Zoom
-    (function(){
-      const track = document.getElementById('teamTrack');
-      if(!track) return;
-      const slides = Array.from(track.children);
-      let idx = 0;
-
-      const dotsBox = document.getElementById('teamDots');
-      slides.forEach((_,i)=>{
-        const b = document.createElement('button');
-        b.addEventListener('click', ()=> go(i));
-        dotsBox.appendChild(b);
-      });
-      const dots = Array.from(dotsBox.children);
-
-      function go(i){
-        idx = (i+slides.length)%slides.length;
-        track.style.transform = `translateX(-${idx*100}%)`;
-        dots.forEach((d,k)=> d.classList.toggle('active', k===idx));
-      }
-      go(0);
-
-      document.querySelectorAll('.team-btn').forEach(btn=>{
-        btn.addEventListener('click', ()=>{
-          go(idx + (btn.dataset.dir==='1'? 1 : -1));
-        });
-      });
-
-      // Zoom modal
-      const modal = document.getElementById('zoomModal');
-      const zoomImg = document.getElementById('zoomImg');
-      track.querySelectorAll('.avatar.xl img').forEach(img=>{
-        img.addEventListener('click', ()=>{
-          zoomImg.src = img.src;
-          zoomImg.alt = img.alt;
-          modal.classList.add('open');
-          modal.setAttribute('aria-hidden','false');
-        });
-      });
-      modal.querySelector('.zoom-close').addEventListener('click', closeZoom);
-      modal.querySelector('.zoom-backdrop').addEventListener('click', closeZoom);
-      function closeZoom(){
-        modal.classList.remove('open');
-        modal.setAttribute('aria-hidden','true');
-        zoomImg.removeAttribute('src');
-      }
-    })();
   </script>
-
-  <!-- Modal de zoom (fuera de scripts para accesibilidad) -->
-  <div id="zoomModal" aria-hidden="true">
-    <div class="zoom-backdrop"></div>
-    <img id="zoomImg" alt="">
-    <button class="zoom-close" aria-label="Cerrar">&#10005;</button>
-  </div>
 </body>
 </html>
+
 
