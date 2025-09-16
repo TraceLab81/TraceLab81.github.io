@@ -9,15 +9,15 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
 
   <!-- SEO básico -->
-  <meta name="description" content="Laboratorio especializado en detección y cuantificación de Cadmio (Cd) y Plomo (Pb) en hortalizas. Reportes con semáforo, QA/QC y alineado a Codex, UE y FDA.">
+  <meta name="description" content="Laboratorio especializado en detección y cuantificación de Cadmio (Cd) y Plomo (Pb) en hortalizas. Reportes con semáforo, QA/QC y alineado a Codex, UE y referencia FDA." />
   <meta name="theme-color" content="#0ea765" />
 
   <!-- Open Graph / Social -->
-  <meta property="og:title" content="TraceLab - Seguridad alimentaria con rigor científico">
-  <meta property="og:description" content="Análisis de Cd y Pb en hortalizas con reportes claros y QA/QC.">
-  <meta property="og:type" content="website">
-  <meta property="og:image" content="Semaforo.jpg">
-  <meta property="og:locale" content="es_MX">
+  <meta property="og:title" content="TraceLab - Seguridad alimentaria con rigor científico" />
+  <meta property="og:description" content="Análisis de Cd y Pb en hortalizas con reportes claros y QA/QC." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="Semaforo.jpg" />
+  <meta property="og:locale" content="es_MX" />
 
   <style>
     /* =========  Diseño base  ========= */
@@ -72,6 +72,8 @@
     }
     .lead{ text-align:center; color:var(--muted); max-width:56ch; margin:0 auto 8px; }
     .center{ text-align:center }
+
+    /* ====== Grid & Cards ====== */
     .grid{ display:grid; gap:22px }
     .grid-3{ grid-template-columns:repeat(3, 1fr) }
     .grid-4{ grid-template-columns:repeat(4, 1fr) }
@@ -88,18 +90,23 @@
       background:linear-gradient(135deg, var(--brand), color-mix(in oklab, var(--brand) 70%, black));
       color:#fff; box-shadow:0 12px 26px -18px rgba(14,167,101, .9); margin: 4px 0 12px;
     }
+
+    /* =========  Navbar (solapamiento fix)  ========= */
     .nav{
       position:sticky; top:0; z-index:50;
       backdrop-filter:saturate(140%) blur(10px);
       background: color-mix(in oklab, var(--bg) 86%, transparent);
       border-bottom:1px solid var(--hair);
     }
-    .nav-wrap{ display:flex; align-items:center; justify-content:space-between; padding: 14px 0; }
-    .brand{ display:flex; align-items:center; gap:12px; font-weight:800 }
-    .brand img{ height:40px; width:auto; border-radius:10px; object-fit:cover }
-    .nav-links{ display:flex; gap:28px; align-items:center }
+    .nav-wrap{ display:flex; align-items:center; justify-content:space-between; padding:14px 0; gap:16px; }
+    .brand{ display:flex; align-items:center; gap:12px; font-weight:800; flex:0 0 auto; min-width:160px; }
+    .brand img{ height:56px; width:auto; border-radius:12px; object-fit:cover } /* ↑ antes 40px */
+    .brand span{ white-space:nowrap; }
+    .nav-links{ display:flex; gap:28px; align-items:center; flex:1 1 auto; justify-content:flex-start; }
     .nav-link{ color:var(--muted); font-weight:600; padding:8px 10px; border-radius:10px; transition:.2s; }
     .nav-link:hover{ color:var(--text); background:var(--hair) }
+
+    /* móvil */
     .burger{ display:none; background:none; border:0; padding:8px; border-radius:10px }
     @media (max-width: 860px){
       .nav-links{ display:none }
@@ -109,6 +116,8 @@
       .mobile a:hover{ background:color-mix(in oklab, var(--hair), transparent 60%); color:var(--text) }
       .mobile.open{ display:block }
     }
+
+    /* =========  Hero  ========= */
     .hero{
       position:relative; overflow:hidden; padding: clamp(96px, 12vw, 160px) 0 90px;
       background:
@@ -121,11 +130,17 @@
       line-height:1.08; margin:0 0 14px; text-wrap:balance;
       letter-spacing:-.5px; font-weight:800;
     }
+
+    /* =========  Media  ========= */
     .media{ background:var(--card); border:1px solid var(--hair); border-radius:var(--radius); overflow:hidden; box-shadow:var(--shadow); }
     .media img{ aspect-ratio: 16 / 10; object-fit: cover; width:100% }
     .media .caption{ padding:12px 16px; color:var(--muted) }
+
+    /* =========  Equipo  ========= */
     .avatar{ width:96px; height:96px; border-radius:50%; overflow:hidden; margin:0 auto 12px; border:2px solid var(--hair) }
     .role{ color:var(--muted); font-size:.98rem }
+
+    /* =========  Inputs  ========= */
     .input, textarea{
       width:100%; padding:12px 14px; border-radius:12px; border:1px solid var(--hair);
       background:var(--card); color:var(--text); outline:none; transition: .2s ease;
@@ -135,8 +150,12 @@
     .map{ aspect-ratio:16 / 9; width:100%; border:0; border-radius:14px; overflow:hidden }
     .contact-card{ display:grid; gap:26px; grid-template-columns: 1.1fr .9fr }
     @media (max-width: 980px){ .contact-card{ grid-template-columns:1fr } }
+
+    /* =========  Animaciones  ========= */
     .reveal{ opacity:0; transform: translateY(12px); transition: .6s cubic-bezier(.2,.65,.25,1); }
     .reveal.show{ opacity:1; transform:none }
+
+    /* Utilidades */
     .mb-4{ margin-bottom:14px } .mb-6{ margin-bottom:18px } .mb-8{ margin-bottom:24px }
     .mt-2{ margin-top:8px } .mt-4{ margin-top:14px } .mt-6{ margin-top:18px } .mt-8{ margin-top:24px }
     .center-narrow{ max-width: 72ch; margin-inline:auto }
@@ -144,21 +163,43 @@
     .sem-figure{ width:min(520px, 100%) ; margin-inline:auto; border-radius:18px; overflow:hidden; border:1px solid var(--hair); box-shadow:var(--shadow) }
     .chips{ display:flex; flex-wrap:wrap; gap:10px; justify-content:center }
     .chip{ border:1px solid var(--hair); padding:8px 12px; border-radius:999px; color:var(--muted); background:var(--card) }
-    /* Badges QA/QC */
     .badges{ display:flex; flex-wrap:wrap; gap:10px; justify-content:center }
     .badge{ background:var(--card); border:1px dashed var(--brand); padding:6px 10px; border-radius:999px; font-weight:600 }
-    /* Tabla simple */
+
+    /* =========  Tabla simple  ========= */
     table{ width:100%; border-collapse: collapse; }
     th, td{ padding:12px 10px; border-bottom:1px solid var(--hair); text-align:left; }
     th{ font-weight:700 }
-    /* Timeline */
+
+    /* =========  Timeline  ========= */
     .timeline{ display:grid; gap:12px; }
     .titem{ background:var(--card); border:1px solid var(--hair); border-radius:14px; padding:12px 14px }
-    /* Footer */
+
+    /* =========  Footer  ========= */
     footer{ border-top:1px solid var(--hair); padding:26px 0; }
     .social{ display:flex; gap:16px; justify-content:center; margin-bottom:10px }
     .icon{ color:var(--muted) }
     .icon:hover{ color:var(--text) }
+
+    /* =========  Carrusel Equipo  ========= */
+    .team-wrap{ position:relative; display:grid; grid-template-columns: 44px 1fr 44px; align-items:center; }
+    .team-btn{ background:var(--card); border:1px solid var(--hair); border-radius:10px; width:40px; height:40px; cursor:pointer; }
+    .team-btn:hover{ background:color-mix(in oklab, var(--hair), transparent 60%); }
+    .team-track{ overflow:hidden; }
+    .team-track .team-slide{ width:100%; flex:0 0 100%; display:grid; justify-items:center; padding:22px; }
+    .team-track{ display:flex; transition:transform .5s cubic-bezier(.2,.65,.25,1); }
+    .avatar.xl{ width:160px; height:160px; border-radius:20px; overflow:hidden; border:2px solid var(--hair); cursor:zoom-in; }
+    @media (max-width:580px){ .avatar.xl{ width:140px; height:140px } }
+    .team-dots{ display:flex; gap:8px; justify-content:center; margin:10px 0 0 }
+    .team-dots button{ width:8px; height:8px; border-radius:999px; border:0; background:var(--hair); cursor:pointer }
+    .team-dots button.active{ background:var(--brand) }
+
+    /* Zoom modal */
+    #zoomModal{ position:fixed; inset:0; display:none; place-items:center; z-index:60; }
+    #zoomModal.open{ display:grid; }
+    .zoom-backdrop{ position:absolute; inset:0; background:rgba(0,0,0,.6); }
+    #zoomImg{ position:relative; max-width:min(92vw, 720px); max-height:86vh; border-radius:16px; box-shadow:var(--shadow) }
+    .zoom-close{ position:absolute; top:18px; right:18px; border:0; background:#fff; border-radius:10px; width:38px; height:38px; cursor:pointer }
   </style>
 
   <!-- JSON-LD Organización -->
@@ -167,7 +208,7 @@
     "@context":"https://schema.org",
     "@type":"Organization",
     "name":"TraceLab",
-    "url":"https://tracelab.example", 
+    "url":"https://tracelab.example",
     "logo":"Logo tracelabbb.jpg",
     "sameAs":["https://instagram.com/tracelabmx"],
     "address":{
@@ -194,9 +235,9 @@
   <!-- Barra de aviso normativo -->
   <div style="background:#0ea765;color:white">
     <div class="container" style="display:flex;gap:10px;align-items:center;justify-content:center;padding:8px 0">
-      <strong>Referencia de límites (vegetales hoja):</strong>
+      <strong>Referencia de límites (vegetales de hoja):</strong>
       <span style="opacity:.95">Pb ≤ 1.0 mg/kg · Cd ≤ 0.2 mg/kg</span>
-      <!-- Estos valores aparecen como ejemplo en el Plan -->
+      <!-- Nota: Codex/UE como criterio de referencia para exportación -->
     </div>
   </div>
 
@@ -216,6 +257,7 @@
         <a class="nav-link" href="#nosotros">Nosotros</a>
         <a class="nav-link" href="#contacto">Contacto</a>
       </nav>
+
       <button class="burger" id="burger" aria-label="Abrir menú">
         <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
       </button>
@@ -329,27 +371,27 @@
     </div>
   </section>
 
-  <!-- Metodología (explicada a nivel negocio) -->
+  <!-- Metodología (simple) -->
   <section id="metodologia" class="section" style="padding-top:50px">
     <div class="container">
       <h2 class="title reveal">Metodología EPA 3050B + FAAS</h2>
-      <p class="lead reveal">Una sola digestión, doble respuesta (Cd y Pb) con controles QA/QC integrados.</p>
+      <p class="lead reveal">Proceso claro y trazable para cuantificar Cd y Pb en hortalizas.</p>
       <div class="grid grid-4 mt-6">
         <div class="card reveal">
           <h3>Recepción & Homogenización</h3>
-          <p>Tratamiento del lote, lavado, troceado y homogenización de 1–2 g de porción analítica.</p>
+          <p>Muestreo compuesto del lote y preparación de porción analítica homogenizada.</p>
         </div>
         <div class="card reveal">
           <h3>Digestión Ácida</h3>
-          <p>HNO₃ + H₂O₂ en hotplate; se lleva a 100 mL con agua desionizada (solución madre).</p>
+          <p>Digestión con mezcla ácida conforme a EPA 3050B para liberar los analitos.</p>
         </div>
         <div class="card reveal">
           <h3>FAAS</h3>
-          <p>Curva con estándares certificados; lectura de Cd y Pb desde la misma digestión.</p>
+          <p>Se emplea <strong>espectrofotómetro de absorción atómica (FAAS)</strong> con curva de calibración trazable.</p>
         </div>
         <div class="card reveal">
           <h3>QA/QC</h3>
-          <p>Blanco, Duplicado, MS, MSD y CCV cada 10 lecturas; resultados en mg/kg y semáforo.</p>
+          <p>Blanco, Duplicado, MS/MSD y CCV cada 10 lecturas. Resultados en mg/kg con semaforización.</p>
         </div>
       </div>
     </div>
@@ -366,11 +408,16 @@
             <thead><tr><th>Norma</th><th>Matriz</th><th>Pb (mg/kg)</th><th>Cd (mg/kg)</th></tr></thead>
             <tbody>
               <tr><td>Codex / UE</td><td>Vegetales de hoja</td><td>1.0</td><td>0.2</td></tr>
-              <tr><td>FDA (referencial)</td><td>Interpretación para exportación</td><td>—</td><td>—</td></tr>
+              <tr><td>FDA (referencial)</td><td>Ver nota</td><td>—</td><td>—</td></tr>
             </tbody>
           </table>
         </div>
-        <p class="mt-4" style="color:var(--muted)">*Usamos criterios de Codex/UE para respaldar decisiones de exportación.</p>
+        <p class="mt-4" style="color:var(--muted)">
+          <strong>Nota FDA:</strong> FDA publica <em>action levels</em> para algunos productos específicos
+          (por ejemplo, alimentos procesados para bebés/niños, ciertos jugos y dulces),
+          pero no fija límites generales de Cd/Pb para hortalizas de hoja destinadas a población general.
+          En exportación a EE. UU., muchos compradores usan criterios Codex/UE y especificaciones privadas.
+        </p>
       </div>
     </div>
   </section>
@@ -423,64 +470,40 @@
         TraceLab es un laboratorio de análisis químico fundado por estudiantes de últimos semestres de la Licenciatura en Química de la Universidad de Guanajuato. Nacimos para fortalecer la seguridad alimentaria en el Bajío.
       </p>
 
-      <h3 class="title mt-6 reveal" style="font-size:1.4rem">Valores</h3>
-      <div class="grid grid-4 mt-4">
-        <div class="card center reveal"><strong>Ética y Transparencia</strong></div>
-        <div class="card center reveal"><strong>Calidad y Excelencia</strong></div>
-        <div class="card center reveal"><strong>Responsabilidad Social</strong></div>
-        <div class="card center reveal"><strong>Innovación Científica</strong></div>
-        <div class="card center reveal"><strong>Compromiso Ambiental</strong></div>
-        <div class="card center reveal"><strong>Accesibilidad y Servicio</strong></div>
-        <div class="card center reveal"><strong>Trabajo en Equipo</strong></div>
-      </div>
-
       <h3 class="title mt-8 reveal" style="font-size:1.4rem">Nuestro Equipo Fundador</h3>
-      <div class="grid grid-4 mt-4">
-        <div class="card center reveal">
-          <div class="avatar"><img src="Kat.jpg" alt="Katyutzka Villarreal" /></div>
-          <h3 style="margin:6px 0 2px">Katyutzka Villarreal</h3>
-          <p class="role">Dirección General y Finanzas</p>
-        </div>
-        <div class="card center reveal">
-          <div class="avatar"><img src="Flavio.jpg" alt="Flavio César Rodríguez" /></div>
-          <h3 style="margin:6px 0 2px">Flavio César Rodríguez</h3>
-          <p class="role">Responsable Técnico</p>
-        </div>
-        <div class="card center reveal">
-          <div class="avatar"><img src="Paola.jpg" alt="Paola Montserrat Gutiérrez" /></div>
-          <h3 style="margin:6px 0 2px">Paola Montserrat Gutiérrez</h3>
-          <p class="role">Coordinadora de Calidad</p>
-        </div>
-        <div class="card center reveal">
-          <div class="avatar"><img src="Willy.jpg" alt="Willy Germain Rodriguez" /></div>
-          <h3 style="margin:6px 0 2px">Willy Germain Rodriguez</h3>
-          <p class="role">Área Comercial y Vinculación</p>
-        </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- FAQ -->
-  <section class="section">
-    <div class="container">
-      <h2 class="title reveal">Preguntas Frecuentes</h2>
-      <div class="grid grid-2 mt-6">
-        <div class="card reveal">
-          <h3>¿En cuánto tiempo entregan resultados?</h3>
-          <p>Servicio estándar en <strong>&lt;72 h</strong> tras recepción de muestra y validación QA/QC.</p>
+      <div class="card reveal" style="overflow:hidden">
+        <div class="team-wrap">
+          <button class="team-btn" aria-label="Anterior" data-dir="-1">&#10094;</button>
+          <div class="team-track" id="teamTrack">
+            <!-- Slide 1 -->
+            <div class="team-slide">
+              <div class="avatar xl"><img src="Kat.jpg" alt="Katyutzka Villarreal"></div>
+              <h3 class="mt-2">Katyutzka Villarreal</h3>
+              <p class="role">Dirección General y Finanzas</p>
+            </div>
+            <!-- Slide 2 -->
+            <div class="team-slide">
+              <div class="avatar xl"><img src="Flavio.jpg" alt="Flavio César Rodríguez"></div>
+              <h3 class="mt-2">Flavio César Rodríguez</h3>
+              <p class="role">Responsable Técnico</p>
+            </div>
+            <!-- Slide 3 -->
+            <div class="team-slide">
+              <div class="avatar xl"><img src="Paola.jpg" alt="Paola Montserrat Gutiérrez"></div>
+              <h3 class="mt-2">Paola Montserrat Gutiérrez</h3>
+              <p class="role">Coordinadora de Calidad</p>
+            </div>
+            <!-- Slide 4 -->
+            <div class="team-slide">
+              <div class="avatar xl"><img src="Willy.jpg" alt="Willy Germain Rodriguez"></div>
+              <h3 class="mt-2">Willy Germain Rodriguez</h3>
+              <p class="role">Área Comercial y Vinculación</p>
+            </div>
+          </div>
+          <button class="team-btn" aria-label="Siguiente" data-dir="1">&#10095;</button>
         </div>
-        <div class="card reveal">
-          <h3>¿Cómo interpretan si “cumple” para exportación?</h3>
-          <p>Comparamos con límites de referencia internacionales (Codex/UE) y marcamos semáforo en el reporte.</p>
-        </div>
-        <div class="card reveal">
-          <h3>¿Pueden apoyar en muestreo?</h3>
-          <p>Sí, asesoramos en muestreo compuesto y cadena de custodia para trazabilidad.</p>
-        </div>
-        <div class="card reveal">
-          <h3>¿Emiten reportes bilingües?</h3>
-          <p>Sí, español/inglés (y francés bajo solicitud) con gráficos de lote y sello de conformidad.</p>
-        </div>
+        <div class="team-dots" id="teamDots" aria-label="Paginación del carrusel"></div>
       </div>
     </div>
   </section>
@@ -572,6 +595,61 @@
       });
     },{ threshold:.15 });
     document.querySelectorAll('.reveal').forEach(el=> io.observe(el));
+
+    // Carrusel equipo + Zoom
+    (function(){
+      const track = document.getElementById('teamTrack');
+      if(!track) return;
+      const slides = Array.from(track.children);
+      let idx = 0;
+
+      const dotsBox = document.getElementById('teamDots');
+      slides.forEach((_,i)=>{
+        const b = document.createElement('button');
+        b.addEventListener('click', ()=> go(i));
+        dotsBox.appendChild(b);
+      });
+      const dots = Array.from(dotsBox.children);
+
+      function go(i){
+        idx = (i+slides.length)%slides.length;
+        track.style.transform = `translateX(-${idx*100}%)`;
+        dots.forEach((d,k)=> d.classList.toggle('active', k===idx));
+      }
+      go(0);
+
+      document.querySelectorAll('.team-btn').forEach(btn=>{
+        btn.addEventListener('click', ()=>{
+          go(idx + (btn.dataset.dir==='1'? 1 : -1));
+        });
+      });
+
+      // Zoom modal
+      const modal = document.getElementById('zoomModal');
+      const zoomImg = document.getElementById('zoomImg');
+      track.querySelectorAll('.avatar.xl img').forEach(img=>{
+        img.addEventListener('click', ()=>{
+          zoomImg.src = img.src;
+          zoomImg.alt = img.alt;
+          modal.classList.add('open');
+          modal.setAttribute('aria-hidden','false');
+        });
+      });
+      modal.querySelector('.zoom-close').addEventListener('click', closeZoom);
+      modal.querySelector('.zoom-backdrop').addEventListener('click', closeZoom);
+      function closeZoom(){
+        modal.classList.remove('open');
+        modal.setAttribute('aria-hidden','true');
+        zoomImg.removeAttribute('src');
+      }
+    })();
   </script>
+
+  <!-- Modal de zoom (fuera de scripts para accesibilidad) -->
+  <div id="zoomModal" aria-hidden="true">
+    <div class="zoom-backdrop"></div>
+    <img id="zoomImg" alt="">
+    <button class="zoom-close" aria-label="Cerrar">&#10005;</button>
+  </div>
 </body>
 </html>
