@@ -100,7 +100,7 @@
     }
     .nav-wrap{ display:flex; align-items:center; justify-content:space-between; padding:14px 0; gap:16px; }
     .brand{ display:flex; align-items:center; gap:12px; font-weight:800; flex:0 0 auto; min-width:160px; }
-    .brand img{ height:56px; width:auto; border-radius:12px; object-fit:cover } /* ↑ antes 40px */
+    .brand img{ height:56px; width:auto; border-radius:12px; object-fit:cover }
     .brand span{ white-space:nowrap; }
     .nav-links{ display:flex; gap:28px; align-items:center; flex:1 1 auto; justify-content:flex-start; }
     .nav-link{ color:var(--muted); font-weight:600; padding:8px 10px; border-radius:10px; transition:.2s; }
@@ -185,14 +185,25 @@
     .team-wrap{ position:relative; display:grid; grid-template-columns: 44px 1fr 44px; align-items:center; }
     .team-btn{ background:var(--card); border:1px solid var(--hair); border-radius:10px; width:40px; height:40px; cursor:pointer; }
     .team-btn:hover{ background:color-mix(in oklab, var(--hair), transparent 60%); }
-    .team-track{ overflow:hidden; }
+    .team-track{ display:flex; overflow:hidden; transition:transform .5s cubic-bezier(.2,.65,.25,1); will-change: transform; }
     .team-track .team-slide{ width:100%; flex:0 0 100%; display:grid; justify-items:center; padding:22px; }
-    .team-track{ display:flex; transition:transform .5s cubic-bezier(.2,.65,.25,1); }
-    .avatar.xl{ width:160px; height:160px; border-radius:20px; overflow:hidden; border:2px solid var(--hair); cursor:zoom-in; }
-    @media (max-width:580px){ .avatar.xl{ width:140px; height:140px } }
+    .avatar.xl{ width:220px; height:220px; border-radius:20px; overflow:hidden; border:2px solid var(--hair); cursor:zoom-in; background:var(--card); display:grid; place-items:center; }
+    .avatar.xl img{ width:100%; height:100%; object-fit:contain; }
+    @media (max-width:580px){ .avatar.xl{ width:180px; height:180px } }
     .team-dots{ display:flex; gap:8px; justify-content:center; margin:10px 0 0 }
     .team-dots button{ width:8px; height:8px; border-radius:999px; border:0; background:var(--hair); cursor:pointer }
     .team-dots button.active{ background:var(--brand) }
+
+    /* ===== Galería de muestras (carrusel) ===== */
+    .gallery-wrap{ position:relative; display:grid; grid-template-columns:44px 1fr 44px; align-items:center; }
+    .gallery-btn{ background:var(--card); border:1px solid var(--hair); border-radius:10px; width:40px; height:40px; cursor:pointer; }
+    .gallery-btn:hover{ background:color-mix(in oklab, var(--hair), transparent 60%); }
+    .gallery-track{ display:flex; overflow:hidden; transition:transform .5s cubic-bezier(.2,.65,.25,1); will-change:transform; }
+    .gallery-slide{ width:100%; flex:0 0 100%; margin:0; }
+    .gallery-slide img{ width:100%; height:420px; object-fit:contain; background:var(--card); }
+    .gallery-dots{ display:flex; gap:8px; justify-content:center; margin:10px 0 0 }
+    .gallery-dots button{ width:8px; height:8px; border-radius:999px; border:0; background:var(--hair); cursor:pointer }
+    .gallery-dots button.active{ background:var(--brand) }
 
     /* Zoom modal */
     #zoomModal{ position:fixed; inset:0; display:none; place-items:center; z-index:60; }
@@ -281,7 +292,10 @@
         Especialistas en la detección de metales pesados en hortalizas, fortaleciendo la competitividad del sector agrícola en el Bajío.
       </p>
       <div class="center reveal" style="margin-top:6px">
-        <a class="btn" href="#servicios">Conoce nuestros servicios</a>
+        <a class="btn"
+           href="mailto:tracelab81@gmail.com?subject=Cotizaci%C3%B3n%20TraceLab&body=Hola%20TraceLab%2C%0AQuiero%20cotizar%20el%20an%C3%A1lisis%20de%3A%0A-%20Matriz%3A%20_________________%0A-%20N.%20de%20muestras%3A%20_____%0A-%20Ubicaci%C3%B3n%3A%20_________________%0AObservaciones%3A%20_________________%0A%0AGracias.">
+          Cotizar ahora
+        </a>
       </div>
       <div class="chips mt-8 reveal" aria-hidden="true">
         <span class="chip">Cd</span><span class="chip">Pb</span><span class="chip">Codex · UE · FDA</span><span class="chip">Semaforización</span><span class="chip">QA/QC</span>
@@ -316,10 +330,10 @@
           </div>
           <h3>Desde $1,989 MXN/muestra</h3>
           <p style="color:var(--muted)">Tarifa de referencia para Cd y Pb en hortalizas. <em>Solicita cotización por volumen.</em></p>
-<a class="btn mt-4" style="width:100%"
-   href="mailto:tracelab81@gmail.com?subject=Cotizaci%C3%B3n%20TraceLab&body=Hola%20TraceLab%2C%0AQuiero%20cotizar%20el%20an%C3%A1lisis%20de%3A%0A-%20Matriz%3A%20_________________%0A-%20N.%20de%20muestras%3A%20_____%0A-%20Ubicaci%C3%B3n%3A%20_________________%0AObservaciones%3A%20_________________%0A%0AGracias.">
-  Cotizar ahora
-</a>
+          <a class="btn mt-4" style="width:100%"
+             href="mailto:tracelab81@gmail.com?subject=Cotizaci%C3%B3n%20TraceLab&body=Hola%20TraceLab%2C%0AQuiero%20cotizar%20el%20an%C3%A1lisis%20de%3A%0A-%20Matriz%3A%20_________________%0A-%20N.%20de%20muestras%3A%20_____%0A-%20Ubicaci%C3%B3n%3A%20_________________%0AObservaciones%3A%20_________________%0A%0AGracias.">
+            Cotizar ahora
+          </a>
         </div>
       </div>
     </div>
@@ -445,23 +459,30 @@
     </div>
   </section>
 
-  <!-- Ejemplos / Galería -->
-  <section class="section">
+  <!-- Galería / Ejemplos de Muestra (carrusel + zoom) -->
+  <section class="section" id="galeria">
     <div class="container">
       <h3 class="title reveal" style="font-size:1.6rem">Ejemplos de Muestra</h3>
-      <div class="grid grid-3 mt-6">
-        <figure class="media reveal">
-          <img src="Brocoli.jpg" alt="Brócoli con etiqueta de cumplimiento">
-          <figcaption class="caption">Brócoli con semaforización.</figcaption>
-        </figure>
-        <figure class="media reveal">
-          <img src="Fresa.jpg" alt="Fresas con etiqueta de cumplimiento">
-          <figcaption class="caption">Fresas con etiqueta de cumplimiento.</figcaption>
-        </figure>
-        <figure class="media reveal">
-          <img src="Pimientos.jpg" alt="Pimientos con etiqueta de análisis">
-          <figcaption class="caption">Pimientos con etiqueta de análisis.</figcaption>
-        </figure>
+      <div class="card reveal" style="overflow:hidden">
+        <div class="gallery-wrap">
+          <button class="gallery-btn" type="button" aria-label="Anterior" data-dir="-1">&#10094;</button>
+          <div class="gallery-track" id="galleryTrack">
+            <figure class="gallery-slide">
+              <img src="Brocoli.jpg" alt="Brócoli con etiqueta de cumplimiento" />
+              <figcaption class="caption">Brócoli con semaforización.</figcaption>
+            </figure>
+            <figure class="gallery-slide">
+              <img src="Fresa.jpg" alt="Fresas con etiqueta de cumplimiento" />
+              <figcaption class="caption">Fresas con etiqueta de cumplimiento.</figcaption>
+            </figure>
+            <figure class="gallery-slide">
+              <img src="Pimientos.jpg" alt="Pimientos con etiqueta de análisis" />
+              <figcaption class="caption">Pimientos con etiqueta de análisis.</figcaption>
+            </figure>
+          </div>
+          <button class="gallery-btn" type="button" aria-label="Siguiente" data-dir="1">&#10095;</button>
+        </div>
+        <div class="gallery-dots" id="galleryDots" aria-label="Paginación de galería"></div>
       </div>
     </div>
   </section>
@@ -478,34 +499,30 @@
 
       <div class="card reveal" style="overflow:hidden">
         <div class="team-wrap">
-          <button class="team-btn" aria-label="Anterior" data-dir="-1">&#10094;</button>
+          <button class="team-btn" type="button" aria-label="Anterior" data-dir="-1">&#10094;</button>
           <div class="team-track" id="teamTrack">
-            <!-- Slide 1 -->
             <div class="team-slide">
               <div class="avatar xl"><img src="Kat.jpg" alt="Katyutzka Villarreal"></div>
               <h3 class="mt-2">Katyutzka Villarreal</h3>
               <p class="role">Dirección General y Finanzas</p>
             </div>
-            <!-- Slide 2 -->
             <div class="team-slide">
               <div class="avatar xl"><img src="Flavio.jpg" alt="Flavio César Rodríguez"></div>
               <h3 class="mt-2">Flavio César Rodríguez</h3>
               <p class="role">Responsable Técnico</p>
             </div>
-            <!-- Slide 3 -->
             <div class="team-slide">
               <div class="avatar xl"><img src="Paola.jpg" alt="Paola Montserrat Gutiérrez"></div>
               <h3 class="mt-2">Paola Montserrat Gutiérrez</h3>
               <p class="role">Coordinadora de Calidad</p>
             </div>
-            <!-- Slide 4 -->
             <div class="team-slide">
               <div class="avatar xl"><img src="Willy.jpg" alt="Willy Germain Rodriguez"></div>
               <h3 class="mt-2">Willy Germain Rodriguez</h3>
               <p class="role">Área Comercial y Vinculación</p>
             </div>
           </div>
-          <button class="team-btn" aria-label="Siguiente" data-dir="1">&#10095;</button>
+          <button class="team-btn" type="button" aria-label="Siguiente" data-dir="1">&#10095;</button>
         </div>
         <div class="team-dots" id="teamDots" aria-label="Paginación del carrusel"></div>
       </div>
@@ -600,33 +617,48 @@
     },{ threshold:.15 });
     document.querySelectorAll('.reveal').forEach(el=> io.observe(el));
 
-    // Carrusel equipo + Zoom
+    // Carrusel equipo (robusto)
     (function(){
       const track = document.getElementById('teamTrack');
       if(!track) return;
+
       const slides = Array.from(track.children);
       let idx = 0;
 
+      // Dots
       const dotsBox = document.getElementById('teamDots');
+      dotsBox.innerHTML = '';
       slides.forEach((_,i)=>{
         const b = document.createElement('button');
+        b.type = 'button';
+        b.setAttribute('aria-label', `Ir al perfil ${i+1}`);
         b.addEventListener('click', ()=> go(i));
         dotsBox.appendChild(b);
       });
       const dots = Array.from(dotsBox.children);
 
+      // Flechas
+      const prevBtn = document.querySelector('.team-btn[data-dir="-1"]');
+      const nextBtn = document.querySelector('.team-btn[data-dir="1"]');
+      [prevBtn, nextBtn].forEach(b=> b?.setAttribute('type','button'));
+      prevBtn?.addEventListener('click', ()=> go(idx-1));
+      nextBtn?.addEventListener('click', ()=> go(idx+1));
+
+      // Teclado
+      track.setAttribute('tabindex','0');
+      track.addEventListener('keydown', (e)=>{
+        if(e.key === 'ArrowRight') go(idx+1);
+        if(e.key === 'ArrowLeft')  go(idx-1);
+      });
+
       function go(i){
-        idx = (i+slides.length)%slides.length;
+        const n = slides.length;
+        idx = ( (i % n) + n ) % n;
         track.style.transform = `translateX(-${idx*100}%)`;
         dots.forEach((d,k)=> d.classList.toggle('active', k===idx));
       }
-      go(0);
 
-      document.querySelectorAll('.team-btn').forEach(btn=>{
-        btn.addEventListener('click', ()=>{
-          go(idx + (btn.dataset.dir==='1'? 1 : -1));
-        });
-      });
+      go(0);
 
       // Zoom modal
       const modal = document.getElementById('zoomModal');
@@ -639,8 +671,70 @@
           modal.setAttribute('aria-hidden','false');
         });
       });
-      modal.querySelector('.zoom-close').addEventListener('click', closeZoom);
-      modal.querySelector('.zoom-backdrop').addEventListener('click', closeZoom);
+      modal.querySelector('.zoom-close')?.addEventListener('click', closeZoom);
+      modal.querySelector('.zoom-backdrop')?.addEventListener('click', closeZoom);
+      function closeZoom(){
+        modal.classList.remove('open');
+        modal.setAttribute('aria-hidden','true');
+        zoomImg.removeAttribute('src');
+      }
+    })();
+
+    // Galería de muestras (carrusel + zoom)
+    (function(){
+      const track = document.getElementById('galleryTrack');
+      if(!track) return;
+
+      const slides = Array.from(track.children);
+      let idx = 0;
+
+      // Dots
+      const dotsBox = document.getElementById('galleryDots');
+      dotsBox.innerHTML='';
+      slides.forEach((_,i)=>{
+        const b = document.createElement('button');
+        b.type='button';
+        b.setAttribute('aria-label', 'Ir a imagen ' + (i+1));
+        b.addEventListener('click', ()=> go(i));
+        dotsBox.appendChild(b);
+      });
+      const dots = Array.from(dotsBox.children);
+
+      // Flechas
+      const prev = document.querySelector('.gallery-btn[data-dir="-1"]');
+      const next = document.querySelector('.gallery-btn[data-dir="1"]');
+      prev?.addEventListener('click', ()=> go(idx-1));
+      next?.addEventListener('click', ()=> go(idx+1));
+
+      // Teclado
+      track.setAttribute('tabindex','0');
+      track.addEventListener('keydown', e=>{
+        if(e.key==='ArrowRight') go(idx+1);
+        if(e.key==='ArrowLeft')  go(idx-1);
+      });
+
+      function go(i){
+        const n = slides.length;
+        idx = ((i % n) + n) % n;
+        track.style.transform = `translateX(-${idx*100}%)`;
+        dots.forEach((d,k)=> d.classList.toggle('active', k===idx));
+      }
+      go(0);
+
+      // Zoom (reutiliza el modal del equipo)
+      const modal = document.getElementById('zoomModal');
+      const zoomImg = document.getElementById('zoomImg');
+      track.querySelectorAll('img').forEach(img=>{
+        img.style.cursor='zoom-in';
+        img.addEventListener('click', ()=>{
+          zoomImg.src = img.src;
+          zoomImg.alt = img.alt;
+          modal.classList.add('open');
+          modal.setAttribute('aria-hidden','false');
+        });
+      });
+      modal.querySelector('.zoom-close')?.addEventListener('click', closeZoom);
+      modal.querySelector('.zoom-backdrop')?.addEventListener('click', closeZoom);
       function closeZoom(){
         modal.classList.remove('open');
         modal.setAttribute('aria-hidden','true');
